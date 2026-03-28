@@ -1,0 +1,11 @@
+{
+  "Navbar": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "testimonials": "Testimonios",
+    "contact": "Contacto",
+    "language": "ES"
+  }
+}
