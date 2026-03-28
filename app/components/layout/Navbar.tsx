@@ -71,24 +71,45 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/*Mobile Menu*/}
-      {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-md z-50">
-            <ul className="flex flex-col items-center gap-6 py-6">
+      {/* Mobile Menu */}
+        {isOpen && (
+        <div className="absolute left-0 top-full z-50 w-full border-b border-gray-200 bg-white shadow-md md:hidden">
+            <div className="px-6 py-8">
+            <ul className="flex flex-col items-center gap-8">
                 {navLinks.map((link) => (
-                    <li key={link.href}>
-                        <a 
-                            href={link.href}
-                            onClick={() => setIsOpen(false)}
-                            className="text-base font-medium text-gray-700 hover:text-black"
-                        >
-                        {link.label}
-                        </a>
-                    </li>
+                <li key={link.href}>
+                    <a
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-base font-medium text-gray-700 transition hover:text-black"
+                    >
+                    {link.label}
+                    </a>
+                </li>
                 ))}
             </ul>
+
+            <div className="mt-8 flex items-center justify-center gap-6 border-t border-gray-200 pt-6">
+                <button
+                type="button"
+                className="flex items-center gap-1 text-sm font-medium text-gray-600 transition hover:text-gray-900"
+                aria-label="Cambiar idioma"
+                >
+                <Languages className="translate-y-[1px]" size={17} strokeWidth={1.9} />
+                <span>ES</span>
+                </button>
+
+                <button
+                type="button"
+                className="text-gray-600 transition hover:text-gray-900"
+                aria-label="Cambiar tema"
+                >
+                <Moon size={17} strokeWidth={1.9} />
+                </button>
+            </div>
+            </div>
         </div>
-      )}
+        )}
     </header>
   );
 }
