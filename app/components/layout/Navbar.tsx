@@ -18,7 +18,7 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="w-full border-b border-gray-200">
+    <header className="relative w-full border-b border-gray-200">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <div>
 
@@ -73,12 +73,14 @@ export default function Navbar() {
 
       {/*Mobile Menu*/}
       {isOpen && (
-        <div>
-            <ul>
+        <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-md z-50">
+            <ul className="flex flex-col items-center gap-6 py-6">
                 {navLinks.map((link) => (
-                    <li>
+                    <li key={link.href}>
                         <a 
                             href={link.href}
+                            onClick={() => setIsOpen(false)}
+                            className="text-base font-medium text-gray-700 hover:text-black"
                         >
                         {link.label}
                         </a>
@@ -86,9 +88,7 @@ export default function Navbar() {
                 ))}
             </ul>
         </div>
-      )
-
-      }
+      )}
     </header>
   );
 }
