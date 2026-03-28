@@ -72,44 +72,48 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Menu */}
-        {isOpen && (
-        <div className="absolute left-0 top-full z-50 w-full border-b border-gray-200 bg-white shadow-md md:hidden">
+                    <div
+            className={`absolute left-0 top-full z-50 w-full border-b border-gray-200 bg-white shadow-md transition-all duration-300 ease-out md:hidden ${
+                isOpen
+                ? "translate-y-0 opacity-100 pointer-events-auto"
+                : "-translate-y-2 opacity-0 pointer-events-none"
+            }`}
+            >
             <div className="px-6 py-8">
-            <ul className="flex flex-col items-center gap-8">
+                <ul className="flex flex-col items-center gap-8">
                 {navLinks.map((link) => (
-                <li key={link.href}>
+                    <li key={link.href}>
                     <a
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="text-base font-medium text-gray-700 transition hover:text-black"
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className="text-base font-medium text-gray-700 transition hover:text-black"
                     >
-                    {link.label}
+                        {link.label}
                     </a>
-                </li>
+                    </li>
                 ))}
-            </ul>
+                </ul>
 
-            <div className="mt-8 flex items-center justify-center gap-6 border-t border-gray-200 pt-6">
+                <div className="mt-8 flex items-center justify-center gap-6 border-t border-gray-200 pt-6">
                 <button
-                type="button"
-                className="flex items-center gap-1 text-sm font-medium text-gray-600 transition hover:text-gray-900"
-                aria-label="Cambiar idioma"
+                    type="button"
+                    className="flex items-center gap-1 text-sm font-medium text-gray-600 transition hover:text-gray-900"
+                    aria-label="Cambiar idioma"
                 >
-                <Languages className="translate-y-[1px]" size={17} strokeWidth={1.9} />
-                <span>ES</span>
+                    <Languages className="translate-y-[1px]" size={17} strokeWidth={1.9} />
+                    <span>ES</span>
                 </button>
 
                 <button
-                type="button"
-                className="text-gray-600 transition hover:text-gray-900"
-                aria-label="Cambiar tema"
+                    type="button"
+                    className="text-gray-600 transition hover:text-gray-900"
+                    aria-label="Cambiar tema"
                 >
-                <Moon size={17} strokeWidth={1.9} />
+                    <Moon size={17} strokeWidth={1.9} />
                 </button>
+                </div>
             </div>
             </div>
-        </div>
-        )}
     </header>
   );
 }
