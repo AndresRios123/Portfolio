@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Languages, Moon } from "lucide-react";
 
 const navLinks = [
   { label: "Inicio", href: "#inicio" },
@@ -30,16 +31,22 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
-          <button 
-            type="button"
-            className="rounded-full border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 transition hover:bg-gray-100"
-            >ES</button>
-           <button
-            type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 text-sm text-gray-700 transition hover:bg-gray-100"
+        <div className="flex items-center gap-5">
+            <button
+                type="button"
+                className="flex items-center gap-1 text-sm font-medium text-gray-600 transition hover:text-gray-900"
+                aria-label="Cambiar idioma"
             >
-            🌙</button>
+                <Languages size={18} strokeWidth={1.8}/>
+                <span>ES</span>
+            </button>
+           <button
+                type="button"
+                className="text-gray-600 transition hover:text-gray-900"
+                aria-label="Cambiar tema"
+            >
+                <Moon size={18} strokeWidth={1.8} />
+            </button>
         </div>
       </nav>
     </header>
