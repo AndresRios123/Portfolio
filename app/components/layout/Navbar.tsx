@@ -70,6 +70,25 @@ export default function Navbar() {
             </button>
         </div>
       </nav>
+
+      {/*Mobile Menu*/}
+      {isOpen && (
+        <div>
+            <ul>
+                {navLinks.map((link) => (
+                    <li>
+                        <a 
+                            href={link.href}
+                        >
+                        {link.label}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+      )
+
+      }
     </header>
   );
 }
