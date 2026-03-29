@@ -7,5 +7,12 @@
     "testimonials": "Testimonials",
     "contact": "Contact",
     "language": "EN"
+  },
+  "Hero": {
+    "greeting": "Hi, my name is",
+    "name": "Andres Rios",
+    "role": "Software Engineer",
+    "description": "focused on developing efficient, scalable and well-designed technological solutions.",
+    "button": "Download CV"
   }
 }
