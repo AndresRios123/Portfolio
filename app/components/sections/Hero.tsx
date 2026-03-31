@@ -40,7 +40,8 @@ export default function Hero() {
             className="flex items-center gap-8 text-[#334155]"
           >
             <a
-              href="#"
+              target="_blank"
+              href="https://github.com/AndresRios123"
               aria-label="GitHub"
               className="text-[22px] transition duration-300 hover:scale-110 hover:text-[#2563eb]"
             >
@@ -48,7 +49,8 @@ export default function Hero() {
             </a>
 
             <a
-              href="#"
+              target="_blank"
+              href="https://www.linkedin.com/in/andres-camilo-rios/"
               aria-label="LinkedIn"
               className="text-[22px] transition duration-300 hover:scale-110 hover:text-[#2563eb]"
             >
@@ -56,7 +58,8 @@ export default function Hero() {
             </a>
 
             <a
-              href="#"
+              target="_blank"
+              href="https://www.instagram.com/camilo_rios__17/"
               aria-label="Instagram"
               className="text-[22px] transition duration-300 hover:scale-110 hover:text-[#2563eb]"
             >
@@ -64,7 +67,8 @@ export default function Hero() {
             </a>
 
             <a
-              href="#"
+              target="_blank"
+              href="https://www.facebook.com/camilo.maya.92/"
               aria-label="Facebook"
               className="text-[22px] transition duration-300 hover:scale-110 hover:text-[#2563eb]"
             >
