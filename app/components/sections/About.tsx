@@ -1,13 +1,15 @@
 export default function About() {
   return (
-    <section id="sobre-mi">
-      <div>
-        <div>
-          <span>+ SOBRE MÍ</span>
+    <section id="sobre-mi" className="bg-[#f5f7fb] px-6 py-20 md:px-10 lg:px-16">
+      <div className="mx-auto max-w-7xl">
+        <header className="mb-14 flex flex-col items-center text-center">
+            <span className="mb-5 inline-flex rounded-full bg-purple-200 px-5 py-2 text-xs font-bold uppercase tracking-wide text-purple-600">
+                + SOBRE MÍ
+            </span>
           <h2>
             Acerca de <span>mí</span>
           </h2>
-        </div>
+        </header>
 
         <div>
           <div>
@@ -37,7 +39,7 @@ export default function About() {
             </div>
 
             <div>
-              {/* Aquí luego importaremos SkillsPanel */}
+              {/* Aquí va SkillsPanel */}
             </div>
           </div>
         </div>
