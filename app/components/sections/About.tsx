@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import SkillsPanel from "./SkillsPanel";
 
 export default function About() {
   const t = useTranslations("About");
@@ -39,7 +40,7 @@ export default function About() {
               </div>
 
               <div>
-                {/* Aquí luego va SkillsPanel */}
+                <SkillsPanel/>
               </div>
             </div>
           </div>
