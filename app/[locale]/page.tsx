@@ -1,7 +1,7 @@
 import Navbar from "../components/layout/Navbar";
 import About from "../components/sections/About";
+import AcademicExperience from "../components/sections/AcademicExperience";
 import Hero from "../components/sections/Hero";
-About
 
 export default function HomePage() {
   return (
@@ -9,6 +9,7 @@ export default function HomePage() {
       <Navbar />
       <Hero />
       <About />
+      <AcademicExperience/>
     </main>
   );
 }
