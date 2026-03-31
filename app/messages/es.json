@@ -21,5 +21,42 @@
     "imagePlaceholder": "Imagen de perfil",
     "paragraph1": "Soy ingeniero de software en formación, enfocado en desarrollar soluciones digitales eficientes y bien estructuradas. Actualmente dedico gran parte de mi tiempo a fortalecer mis habilidades mediante proyectos y aprendizaje constante.",
     "paragraph2": "En lo personal, disfruto explorar nuevas tecnologías, trabajar en ideas propias y sumergirme en videojuegos y música que transmiten experiencias únicas. Me caracterizo por ser curioso, autodidacta y siempre estar en busca de nuevos retos que me permitan crecer tanto profesional como personalmente."
+  },
+  "experience": {
+    "title": "Experiencia Académica",
+    "subtitle": "Mi trayectoria educativa y desarrollo profesional",
+    "highlights": "Aspectos destacados:",
+    "items": {
+      "software": {
+        "title": "Ingeniería de Software",
+        "institution": "Universidad",
+        "description": "Formación profesional enfocada en desarrollo de software, arquitectura de sistemas y tecnologías modernas. Desarrollo de proyectos integrales aplicando buenas prácticas y metodologías ágiles.",
+        "highlights": [
+          "Desarrollo full stack con tecnologías modernas",
+          "Proyectos colaborativos y trabajo en equipo",
+          "Implementación de arquitecturas escalables"
+        ]
+      },
+      "systems": {
+        "title": "Técnico en Sistemas",
+        "institution": "Cinar Sistemas",
+        "description": "Formación técnica en sistemas de información, programación y gestión de bases de datos. Bases sólidas para el desarrollo de software.",
+        "highlights": [
+          "Fundamentos de programación",
+          "Gestión de bases de datos",
+          "Desarrollo de aplicaciones"
+        ]
+      },
+      "maintenance": {
+        "title": "Técnico en Mantenimiento de Equipos de Cómputo",
+        "institution": "SENA",
+        "description": "Formación técnica en mantenimiento preventivo y correctivo de equipos de cómputo, redes y soporte técnico. Primera base en el mundo de la tecnología.",
+        "highlights": [
+          "Mantenimiento de hardware y software",
+          "Configuración de redes",
+          "Soporte técnico especializado"
+        ]
+      }
+    }
   }
 }
