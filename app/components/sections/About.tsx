@@ -6,8 +6,8 @@ export default function About() {
             <span className="mb-5 inline-flex rounded-full bg-purple-200 px-5 py-2 text-xs font-bold uppercase tracking-wide text-purple-600">
                 + SOBRE MÍ
             </span>
-          <h2>
-            Acerca de <span>mí</span>
+          <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-6xl">
+            Acerca de <span className="text-purple-600">mí</span>
           </h2>
         </header>
 
