@@ -14,5 +14,12 @@
     "role": "Ingeniero de software",
     "description": "enfocado en desarrollar soluciones tecnológicas eficientes, escalables y bien diseñadas.",
     "button": "Descargar CV"
+  },
+  "About": {
+    "badge": "+ SOBRE MÍ",
+    "title": "Acerca de <highlight>mí</highlight>",
+    "imagePlaceholder": "Imagen de perfil",
+    "paragraph1": "Soy ingeniero de software en formación, enfocado en desarrollar soluciones digitales eficientes y bien estructuradas. Actualmente dedico gran parte de mi tiempo a fortalecer mis habilidades mediante proyectos y aprendizaje constante.",
+    "paragraph2": "En lo personal, disfruto explorar nuevas tecnologías, trabajar en ideas propias y sumergirme en videojuegos y música que transmiten experiencias únicas. Me caracterizo por ser curioso, autodidacta y siempre estar en busca de nuevos retos que me permitan crecer tanto profesional como personalmente."
   }
 }

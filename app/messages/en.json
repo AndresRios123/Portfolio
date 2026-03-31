@@ -14,5 +14,12 @@
     "role": "Software Engineer",
     "description": "focused on developing efficient, scalable and well-designed technological solutions.",
     "button": "Download CV"
+  },
+    "About": {
+    "badge": "+ ABOUT ME",
+    "title": "About <highlight>me</highlight>",
+    "imagePlaceholder": "Profile image",
+    "paragraph1": "I am a software engineer in training, focused on developing efficient and well-structured digital solutions. I currently dedicate much of my time to strengthening my skills through projects and continuous learning.",
+    "paragraph2": "On a personal level, I enjoy exploring new technologies, working on my own ideas, and immersing myself in video games and music that create unique experiences. I consider myself curious, self-taught, and always in search of new challenges that help me grow both professionally and personally."
   }
 }
