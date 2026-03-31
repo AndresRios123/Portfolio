@@ -6,44 +6,54 @@ import { HiOutlineCode } from "react-icons/hi";
 
 export default function Projects() {
   return (
-    <section id="proyectos" className="px-6 py-20 md:px-10 lg:px-16">
+    <section
+      id="proyectos"
+      className="bg-[#f8fafc] px-6 py-24 md:px-10 lg:px-16"
+    >
       <div className="mx-auto max-w-[1180px]">
         {/* Header */}
-        <div className="mb-14 text-center">
-          <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">
+        <div className="mb-14 flex flex-col items-center text-center">
+          <h2 className="text-[2rem] font-bold tracking-[-0.03em] text-[#0f172a] md:text-[3rem]">
             Proyectos
           </h2>
 
-          {/* Línea decorativa */}
-          <div className="mx-auto mt-3 h-[3px] w-14 rounded-full bg-purple-500" />
+          <div className="mt-4 h-[3px] w-[52px] rounded-full bg-[#8b5cf6]" />
 
-          <p className="mx-auto mt-4 max-w-xl text-sm text-slate-500 md:text-base">
+          <p className="mt-5 max-w-[470px] text-[14px] leading-[1.6] text-[#64748b] md:text-[15px]">
             Una selección de proyectos que demuestran mis habilidades en
             desarrollo web y resolución de problemas
           </p>
         </div>
 
         {/* Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {projectsData.map((project) => (
             <article
               key={project.id}
-              className="flex flex-col overflow-hidden rounded-2xl border bg-white"
+              className="overflow-hidden rounded-[16px] border border-[#dbe4ff] bg-white shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(15,23,42,0.08)]"
             >
-              {/* Preview */}
-              <div className="flex h-40 items-center justify-center bg-purple-200">
-                <HiOutlineCode className="text-4xl text-purple-500" />
+              {/* Preview / luego aquí pondrás imagen real */}
+              <div className="relative flex h-[180px] items-center justify-center overflow-hidden bg-gradient-to-br from-[#ddd6fe] via-[#e9d5ff] to-[#f5d0fe]">
+                {/* Cuando pongas imagen real, reemplazas este bloque */}
+                <HiOutlineCode className="text-[64px] text-[#a78bfa]" />
+
+                {/* Ejemplo futuro:
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="h-full w-full object-cover"
+                />
+                */}
               </div>
 
               {/* Content */}
-              <div className="flex flex-1 flex-col p-5">
-                <h3 className="text-lg font-semibold text-slate-900">
-                  {project.key}
+              <div className="p-5">
+                <h3 className="text-[18px] font-semibold text-[#0f172a]">
+                  {project.title}
                 </h3>
 
-                <p className="mt-2 text-sm text-slate-600">
-                  Aquí irá la descripción del proyecto, explicando brevemente su
-                  funcionalidad y propósito.
+                <p className="mt-3 text-[14px] leading-[1.75] text-[#475569]">
+                  {project.description}
                 </p>
 
                 {/* Tags */}
@@ -51,22 +61,22 @@ export default function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600"
+                      className="rounded-full bg-[#f3f4f6] px-3 py-[6px] text-[11px] font-medium text-[#6366f1]"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                {/* Actions */}
-                <div className="mt-auto flex gap-3 pt-5">
+                {/* Buttons */}
+                <div className="mt-5 flex items-center gap-3">
                   <a
                     href={project.liveUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 rounded-lg bg-purple-600 px-4 py-2 text-sm font-medium text-white"
+                    className="inline-flex h-[40px] flex-1 items-center justify-center gap-2 rounded-[9px] bg-[#4f46e5] px-4 text-[14px] font-semibold text-white transition-all duration-200 hover:bg-[#4338ca]"
                   >
-                    <FiExternalLink />
+                    <FiExternalLink className="text-[15px]" />
                     Ver proyecto
                   </a>
 
@@ -74,9 +84,9 @@ export default function Projects() {
                     href={project.codeUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium text-slate-700"
+                    className="inline-flex h-[40px] items-center justify-center gap-2 rounded-[9px] border border-[#cbd5e1] bg-white px-4 text-[14px] font-medium text-[#0f172a] transition-all duration-200 hover:bg-[#f8fafc]"
                   >
-                    <FiGithub />
+                    <FiGithub className="text-[15px]" />
                     Código
                   </a>
                 </div>
