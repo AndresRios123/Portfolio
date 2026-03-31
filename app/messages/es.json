@@ -11,6 +11,7 @@
   "Hero": {
     "greeting": "Hola, mi nombre es",
     "name": "Andres Rios",
+    "roles": ["<Ingeniero de Software/>", "<Desarrollador Frontend/>", "<Desarrollador Backend/>", "<Desarrollador Full Stack/>"],
     "role": "Ingeniero de software",
     "description": "enfocado en desarrollar soluciones tecnológicas eficientes, escalables y bien diseñadas.",
     "button": "Descargar CV"

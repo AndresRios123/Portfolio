@@ -10,6 +10,7 @@
   },
   "Hero": {
     "greeting": "Hi, my name is",
+    "roles": ["<Software Engineer/>", "<Frontend Developer/>", "<Backend Developer/>", "<Full Stack Developer/>"],
     "name": "Andres Rios",
     "role": "Software Engineer",
     "description": "focused on developing efficient, scalable and well-designed technological solutions.",
