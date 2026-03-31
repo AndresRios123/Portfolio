@@ -8,7 +8,7 @@ export default function Hero() {
   const t = useTranslations("Hero");
 
   return (
-    <section id="inicio" className="bg-[#f5f7fb]">
+    <section id="inicio" className="bg-[#f5f7fb] pt-7">
       <div className="mx-auto grid min-h-[calc(100vh-80px)] max-w-7xl items-center gap-14 px-6 py-14 md:grid-cols-2 md:px-10 lg:px-16">
         <div className="flex max-w-2xl flex-col items-start">
           <p className="mb-5 text-lg font-medium text-[#23395d] md:text-[20px]">

@@ -1,13 +1,14 @@
 "use client";
 
-import {useState} from "react";
-import {Languages, Moon, Menu, X} from "lucide-react";
-import {useLocale, useTranslations} from "next-intl";
-import {useRouter, usePathname} from "../../i18n/navigation";
+import { useEffect, useState } from "react";
+import { Languages, Moon, Menu, X } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { useRouter, usePathname } from "../../i18n/navigation";
 import Link from "next/link";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const t = useTranslations("Navbar");
   const locale = useLocale();
@@ -15,21 +16,38 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const navLinks = [
-    {label: t("home"), href: "#inicio"},
-    {label: t("about"), href: "#sobre-mi"},
-    {label: t("experience"), href: "#experiencia"},
-    {label: t("projects"), href: "#proyectos"},
-    {label: t("testimonials"), href: "#testimonios"},
-    {label: t("contact"), href: "#contacto"}
+    { label: t("home"), href: "#inicio" },
+    { label: t("about"), href: "#sobre-mi" },
+    { label: t("experience"), href: "#experiencia" },
+    { label: t("projects"), href: "#proyectos" },
+    { label: t("testimonials"), href: "#testimonios" },
+    { label: t("contact"), href: "#contacto" },
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const changeLanguage = () => {
     const nextLocale = locale === "es" ? "en" : "es";
-    router.replace(pathname, {locale: nextLocale});
+    router.replace(pathname, { locale: nextLocale });
   };
 
   return (
-    <header className="relative w-full border-b border-gray-200 bg-white">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "border-b border-gray-200/80 bg-white/75 shadow-[0_8px_30px_rgba(15,23,42,0.06)] backdrop-blur-md"
+          : "border-b border-transparent bg-white/40 backdrop-blur-sm py-5"
+      }`}
+    >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
           href="/"
@@ -38,7 +56,7 @@ export default function Navbar() {
           {"<AR>"}
         </Link>
 
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
@@ -52,14 +70,18 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-4">
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden items-center gap-6 md:flex">
             <button
               type="button"
               onClick={changeLanguage}
               className="flex items-center gap-1 text-sm font-medium text-gray-600 transition hover:text-gray-900"
               aria-label="Cambiar idioma"
             >
-              <Languages className="translate-y-[1px]" size={17} strokeWidth={1.9} />
+              <Languages
+                className="translate-y-[1px]"
+                size={17}
+                strokeWidth={1.9}
+              />
               <span>{t("language")}</span>
             </button>
 
@@ -84,7 +106,7 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`absolute left-0 top-full z-50 w-full border-b border-gray-200 bg-white shadow-md transition-all duration-300 ease-out md:hidden ${
+        className={`absolute left-0 top-full z-50 w-full border-b border-gray-200/80 bg-white/90 shadow-md backdrop-blur-md transition-all duration-300 ease-out md:hidden ${
           isOpen
             ? "translate-y-0 opacity-100 pointer-events-auto"
             : "-translate-y-4 opacity-0 pointer-events-none"
@@ -112,7 +134,11 @@ export default function Navbar() {
               className="flex items-center gap-1 text-sm font-medium text-gray-600 transition hover:text-gray-900"
               aria-label="Cambiar idioma"
             >
-              <Languages className="translate-y-[1px]" size={17} strokeWidth={1.9} />
+              <Languages
+                className="translate-y-[1px]"
+                size={17}
+                strokeWidth={1.9}
+              />
               <span>{t("language")}</span>
             </button>
 
