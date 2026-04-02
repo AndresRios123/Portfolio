@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import {
   FiMapPin,
   FiMail,
@@ -12,21 +15,14 @@ import { HiOutlineCodeBracket } from "react-icons/hi2";
 import { RiStackLine } from "react-icons/ri";
 
 export default function Footer() {
-  const navigationLinks = [
-    { label: "Inicio", href: "#inicio" },
-    { label: "Sobre mí", href: "#sobre-mi" },
-    { label: "Experiencia Académica", href: "#experiencia" },
-    { label: "Proyectos", href: "#proyectos" },
-    { label: "Testimonios", href: "#testimonios" },
-  ];
+  const t = useTranslations("footer");
 
-  const services = [
-    "Desarrollo Web Frontend",
-    "Desarrollo Web Backend",
-    "Aplicaciones Full Stack",
-    "Diseño de Interfaces",
-    "Consultoría Técnica",
-  ];
+  const navigationLinks = t.raw("navigationLinks") as {
+    label: string;
+    href: string;
+  }[];
+
+  const services = t.raw("services") as string[];
 
   const socialLinks = [
     { icon: FiGithub, href: "#", label: "GitHub" },
@@ -47,14 +43,12 @@ export default function Footer() {
             </div>
 
             <p className="mt-8 max-w-[290px] text-[15px] leading-[1.65] text-[#b4c1da]">
-              Ingeniero de software enfocado en crear soluciones digitales
-              eficientes y escalables. Apasionado por el desarrollo web y las
-              nuevas tecnologías.
+              {t("description")}
             </p>
 
             <div className="mt-8 flex items-center gap-2.5 text-[15px] text-[#c3d0e6]">
               <FiMapPin className="text-[15px] text-[#4ea1ff]" />
-              <span>Colombia</span>
+              <span>{t("location")}</span>
             </div>
           </div>
 
@@ -63,7 +57,7 @@ export default function Footer() {
             <div className="flex items-center gap-2.5">
               <HiOutlineCodeBracket className="text-[17px] text-[#4ea1ff]" />
               <h3 className="text-[17px] font-semibold tracking-[-0.02em] text-white">
-                Navegación
+                {t("navigationTitle")}
               </h3>
             </div>
 
@@ -88,7 +82,7 @@ export default function Footer() {
             <div className="flex items-center gap-2.5">
               <RiStackLine className="text-[17px] text-[#4ea1ff]" />
               <h3 className="text-[17px] font-semibold tracking-[-0.02em] text-white">
-                Servicios
+                {t("servicesTitle")}
               </h3>
             </div>
 
@@ -106,7 +100,7 @@ export default function Footer() {
             <div className="flex items-center gap-2.5">
               <FiMail className="text-[17px] text-[#4ea1ff]" />
               <h3 className="text-[17px] font-semibold tracking-[-0.02em] text-white">
-                Contacto
+                {t("contactTitle")}
               </h3>
             </div>
 
@@ -117,10 +111,10 @@ export default function Footer() {
                 </div>
 
                 <a
-                  href="mailto:andresrios@example.com"
+                  href={`mailto:${t("email")}`}
                   className="text-[15px] text-[#c3d0e6] transition-colors duration-200 hover:text-white"
                 >
-                  andresrios@example.com
+                  {t("email")}
                 </a>
               </div>
 
@@ -130,16 +124,16 @@ export default function Footer() {
                 </div>
 
                 <a
-                  href="tel:+573001234567"
+                  href={`tel:${t("phoneHref")}`}
                   className="text-[15px] text-[#c3d0e6] transition-colors duration-200 hover:text-white"
                 >
-                  +57 300 123 4567
+                  {t("phone")}
                 </a>
               </div>
             </div>
 
             <div className="mt-9">
-              <p className="text-[15px] text-[#c3d0e6]">Sígueme en:</p>
+              <p className="text-[15px] text-[#c3d0e6]">{t("followMe")}</p>
 
               <div className="mt-4 flex items-center gap-3">
                 {socialLinks.map((social) => {
@@ -170,14 +164,16 @@ export default function Footer() {
         <div className="mt-8 flex flex-col gap-5 text-[15px] text-[#b4c1da] md:flex-row md:items-center md:justify-between">
           <p>
             © 2026{" "}
-            <span className="font-semibold text-[#4ea1ff]">Andres Rios</span>.
-            {" "}Todos los derechos reservados.
+            <span className="font-semibold text-[#4ea1ff]">
+              {t("name")}
+            </span>
+            . {" "}{t("rights")}
           </p>
 
           <p className="flex items-center gap-2">
-            <span>Construido con</span>
+            <span>{t("builtWith")}</span>
             <FiHeart className="text-[#ff6b81]" />
-            <span>y mucha pasión por la tecnología</span>
+            <span>{t("passion")}</span>
           </p>
         </div>
       </div>
