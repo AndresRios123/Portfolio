@@ -3,46 +3,72 @@
 import { useTranslations } from "next-intl";
 import { RiDoubleQuotesR } from "react-icons/ri";
 
+type TestimonialItem = {
+  name: string;
+  role: string;
+  initials: string;
+  text: string;
+};
+
 export default function Testimonials() {
   const t = useTranslations("testimonials");
-
-  const items = t.raw("items");
+  const items = t.raw("items") as TestimonialItem[];
 
   return (
-    <section id="testimonios">
-      <div>
+    <section
+      id="testimonios"
+      className="bg-[#f8fafc] px-6 py-24 md:px-10 lg:px-16"
+    >
+      <div className="mx-auto max-w-[1180px]">
         {/* Header */}
-        <div>
-          <h2>{t("title")}</h2>
-          <div />
-          <p>{t("subtitle")}</p>
+        <div className="mb-14 flex flex-col items-center text-center">
+          <h2 className="text-[2rem] font-bold leading-none tracking-[-0.03em] text-[#0f172a] md:text-[3rem]">
+            {t("title")}
+          </h2>
+
+          <div className="mt-4 h-[3px] w-[54px] rounded-full bg-[#8b5cf6]" />
+
+          <p className="mt-5 max-w-[430px] text-[14px] leading-[1.6] text-[#64748b] md:text-[15px]">
+            {t("subtitle")}
+          </p>
         </div>
 
         {/* Grid */}
-        <div>
-          {items.map((item: any, index: number) => (
-            <article key={index}>
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {items.map((item, index) => (
+            <article
+              key={index}
+              className="rounded-[16px] border border-[#e5e7eb] bg-white px-6 py-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(15,23,42,0.06)]"
+            >
               {/* Top */}
-              <div>
-                <div>
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-center gap-3">
                   {/* Avatar */}
-                  <div>{item.initials}</div>
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#8b5cf6] text-[13px] font-semibold text-white">
+                    {item.initials}
+                  </div>
 
                   {/* Info */}
                   <div>
-                    <h3>{item.name}</h3>
-                    <p>{item.role}</p>
+                    <h3 className="text-[15px] font-semibold leading-tight text-[#0f172a]">
+                      {item.name}
+                    </h3>
+                    <p className="mt-1 text-[13px] leading-none text-[#64748b]">
+                      {item.role}
+                    </p>
                   </div>
                 </div>
 
-                {/* Icon */}
-                <div>
-                  <RiDoubleQuotesR />
+                {/* Quote icon */}
+                <div className="pt-1 text-[#c4b5fd]">
+                  <RiDoubleQuotesR className="text-[26px]" />
                 </div>
               </div>
 
               {/* Text */}
-              <p>"{item.text}"</p>
+              <p className="mt-8 text-[15px] leading-[1.75] text-[#475569]">
+                "{item.text}"
+              </p>
             </article>
           ))}
         </div>
