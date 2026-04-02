@@ -3,6 +3,7 @@ import About from "../components/sections/About";
 import AcademicExperience from "../components/sections/AcademicExperience";
 import Hero from "../components/sections/Hero";
 import Projects from "../components/sections/Projects";
+import Testimonials from "../components/sections/Testimonials";
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <About />
       <Projects/>
       <AcademicExperience/>
+      <Testimonials/>
     </main>
   );
 }
