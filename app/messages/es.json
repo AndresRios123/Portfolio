@@ -113,5 +113,44 @@
 
       "submit": "Enviar mensaje"
     }
+  },
+  "footer": {
+    "description": "Ingeniero de software enfocado en crear soluciones digitales eficientes y escalables. Apasionado por el desarrollo web y las nuevas tecnologías.",
+    "location": "Colombia",
+
+    "navigation": {
+      "title": "Navegación",
+      "links": [
+        "Inicio",
+        "Sobre mí",
+        "Experiencia Académica",
+        "Proyectos",
+        "Testimonios"
+      ]
+    },
+
+    "services": {
+      "title": "Servicios",
+      "items": [
+        "Desarrollo Web Frontend",
+        "Desarrollo Web Backend",
+        "Aplicaciones Full Stack",
+        "Diseño de Interfaces",
+        "Consultoría Técnica"
+      ]
+    },
+
+    "contact": {
+      "title": "Contacto",
+      "email": "andresrios@example.com",
+      "phone": "+57 300 123 4567",
+      "socialTitle": "Sígueme en:"
+    },
+
+    "bottom": {
+      "rights": "Todos los derechos reservados.",
+      "builtWith": "Construido con",
+      "passion": "y mucha pasión por la tecnología"
+    }
   }
 }

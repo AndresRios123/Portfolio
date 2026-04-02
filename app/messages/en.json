@@ -113,5 +113,44 @@
 
       "submit": "Send message"
     }
+  },
+  "footer": {
+    "description": "Software engineer focused on building efficient and scalable digital solutions. Passionate about web development and new technologies.",
+    "location": "Colombia",
+
+    "navigation": {
+      "title": "Navigation",
+      "links": [
+        "Home",
+        "About",
+        "Academic Experience",
+        "Projects",
+        "Testimonials"
+      ]
+    },
+
+    "services": {
+      "title": "Services",
+      "items": [
+        "Frontend Web Development",
+        "Backend Web Development",
+        "Full Stack Applications",
+        "UI Design",
+        "Technical Consulting"
+      ]
+    },
+
+    "contact": {
+      "title": "Contact",
+      "email": "andresrios@example.com",
+      "phone": "+57 300 123 4567",
+      "socialTitle": "Follow me on:"
+    },
+
+    "bottom": {
+      "rights": "All rights reserved.",
+      "builtWith": "Built with",
+      "passion": "and a lot of passion for technology"
+    }
   }
 }
