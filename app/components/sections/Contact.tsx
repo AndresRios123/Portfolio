@@ -1,4 +1,4 @@
-// import ContactForm from "./ContactForm";
+import ContactForm from "./ContactForm";
 
 export default function Contact() {
   const socialLinks = [
@@ -53,7 +53,7 @@ export default function Contact() {
 
           {/* Right side */}
           <div>
-            {/* <ContactForm /> */}
+            <ContactForm />
           </div>
         </div>
       </div>
