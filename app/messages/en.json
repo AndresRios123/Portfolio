@@ -83,5 +83,35 @@
         "text": "Andres has a great ability to turn ideas into clean and functional code. His attention to detail and commitment to quality make every collaboration productive and enriching."
       }
     ]
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Do you have a project in mind? I would love to hear from you",
+
+    "left": {
+      "title": "Connect with me",
+      "description": "I am available for collaboration opportunities, freelance projects, or just a conversation about technology.",
+      "socialTitle": "Follow me on social media"
+    },
+
+    "socialLinks": [
+      { "platform": "GitHub", "href": "#" },
+      { "platform": "LinkedIn", "href": "#" },
+      { "platform": "Instagram", "href": "#" },
+      { "platform": "Facebook", "href": "#" }
+    ],
+
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+
+      "emailLabel": "Email",
+      "emailPlaceholder": "your@email.com",
+
+      "messageLabel": "Message",
+      "messagePlaceholder": "Tell me about your project...",
+
+      "submit": "Send message"
+    }
   }
 }

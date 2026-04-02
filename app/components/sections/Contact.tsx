@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import ContactForm from "./ContactForm";
 import {
   FiGithub,
@@ -6,30 +9,13 @@ import {
   FiFacebook,
 } from "react-icons/fi";
 
-const socialLinks = [
-  {
-    platform: "GitHub",
-    href: "#",
-    icon: FiGithub,
-  },
-  {
-    platform: "LinkedIn",
-    href: "#",
-    icon: FiLinkedin,
-  },
-  {
-    platform: "Instagram",
-    href: "#",
-    icon: FiInstagram,
-  },
-  {
-    platform: "Facebook",
-    href: "#",
-    icon: FiFacebook,
-  },
-];
-
 export default function Contact() {
+  const t = useTranslations("contact");
+
+  const socialLinks = t.raw("socialLinks");
+
+  const icons = [FiGithub, FiLinkedin, FiInstagram, FiFacebook];
+
   return (
     <section
       id="contacto"
@@ -38,50 +24,49 @@ export default function Contact() {
       <div className="mx-auto max-w-[1180px]">
         {/* Header */}
         <div className="mb-14 flex flex-col items-center text-center">
-          <h2 className="text-[2rem] font-bold leading-none tracking-[-0.03em] text-[#0f172a] md:text-[3rem]">
-            Contacto
+          <h2 className="text-[2rem] font-bold tracking-[-0.03em] text-[#0f172a] md:text-[3rem]">
+            {t("title")}
           </h2>
 
           <div className="mt-4 h-[3px] w-[54px] rounded-full bg-[#8b5cf6]" />
 
-          <p className="mt-5 max-w-[470px] text-[14px] leading-[1.6] text-[#64748b] md:text-[15px]">
-            ¿Tienes un proyecto en mente? Me encantaría saber de ti
+          <p className="mt-5 max-w-[470px] text-[14px] text-[#64748b] md:text-[15px]">
+            {t("subtitle")}
           </p>
         </div>
 
-        {/* Main content */}
-        <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          {/* Left side */}
-          <div className="pt-1">
-            <div className="max-w-[420px]">
-              <h3 className="text-[28px] font-semibold leading-tight text-[#0f172a]">
-                Conecta conmigo
+        {/* Content */}
+        <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr]">
+          {/* Left */}
+          <div>
+            <div>
+              <h3 className="text-[28px] font-semibold text-[#0f172a]">
+                {t("left.title")}
               </h3>
 
-              <p className="mt-5 text-[15px] leading-[1.75] text-[#475569]">
-                Estoy disponible para oportunidades de colaboración, proyectos
-                freelance o simplemente para una conversación sobre tecnología.
+              <p className="mt-5 text-[15px] text-[#475569]">
+                {t("left.description")}
               </p>
             </div>
 
             <div className="mt-10">
               <h4 className="text-[15px] font-semibold text-[#0f172a]">
-                Sígueme en redes sociales
+                {t("left.socialTitle")}
               </h4>
 
               <div className="mt-4 space-y-3">
-                {socialLinks.map((social) => {
-                  const Icon = social.icon;
+                {socialLinks.map((social: any, index: number) => {
+                  const Icon = icons[index];
 
                   return (
                     <a
-                      key={social.platform}
+                      key={index}
                       href={social.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex h-[46px] items-center gap-3 rounded-[8px] border border-[#e5e7eb] bg-white px-4 text-[14px] font-medium text-[#334155] transition-colors duration-200 hover:bg-[#f8fafc]"
+                      className="flex h-[46px] items-center gap-3 rounded-[8px] border border-[#e5e7eb] bg-white px-4 text-[14px] text-[#334155] hover:bg-[#f8fafc]"
                     >
-                      <Icon className="text-[16px] text-[#475569]" />
+                      <Icon className="text-[16px]" />
                       <span>{social.platform}</span>
                     </a>
                   );
@@ -90,7 +75,7 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right side */}
+          {/* Right */}
           <div>
             <ContactForm />
           </div>
