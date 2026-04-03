@@ -5,8 +5,8 @@ export const projectsData = [
     description:
       "Reproductor de música en tiempo real construido con integración de API, permitiendo a los usuarios explorar y reproducir sus canciones favoritas con una interfaz moderna e intuitiva.",
     tags: ["React", "API Integration", "JavaScript", "CSS"],
-    liveUrl: "#",
-    codeUrl: "#",
+    liveUrl: "https://playlist-app-ycrt.vercel.app/",
+    codeUrl: "https://github.com/AndresRios123/playlist-app",
   },
   {
     id: 2,
