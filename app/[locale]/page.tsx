@@ -6,7 +6,7 @@ import Projects from "../components/sections/Projects";
 import Testimonials from "../components/sections/Testimonials";
 import Contact from "../components/sections/Contact";
 import Footer from "../components/layout/Footer";
-import ServicesSection from "../components/sections/ServicesSection";
+import { ServicesSection } from "../components/sections/ServicesSection";
 
 
 export default function HomePage() {
