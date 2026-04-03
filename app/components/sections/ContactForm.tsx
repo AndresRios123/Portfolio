@@ -2,70 +2,108 @@
 
 import { useTranslations } from "next-intl";
 import { FiSend } from "react-icons/fi";
+import { useState } from "react";
 
 export default function ContactForm() {
   const t = useTranslations("contact.form");
 
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMsg("");
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      message: formData.get("message") as string,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const json = await res.json();
+        throw new Error(json.error || "Error desconocido");
+      }
+
+      setStatus("success");
+      (e.target as HTMLFormElement).reset();
+    } catch (err: any) {
+      setErrorMsg(err.message);
+      setStatus("error");
+    }
+  }
+
   return (
-    <form className="rounded-[16px] border border-[#e5e7eb] bg-white p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] md:p-7">
+    <form
+      onSubmit={handleSubmit}
+      className="rounded-[16px] border border-[#e5e7eb] bg-white p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] md:p-7"
+    >
       <div className="space-y-5">
         {/* Name */}
         <div>
-          <label
-            htmlFor="name"
-            className="mb-2 block text-[14px] font-semibold text-[#0f172a]"
-          >
+          <label htmlFor="name" className="mb-2 block text-[14px] font-semibold text-[#0f172a]">
             {t("nameLabel")}
           </label>
           <input
-            id="name"
-            name="name"
-            type="text"
-            placeholder={t("namePlaceholder")}
+            id="name" name="name" type="text"
+            placeholder={t("namePlaceholder")} required
             className="h-[46px] w-full rounded-[8px] border border-[#cbd5e1] bg-white px-4 text-[14px] text-[#0f172a] placeholder:text-[#94a3b8] outline-none transition-colors duration-200 focus:border-[#8b5cf6]"
           />
         </div>
 
         {/* Email */}
         <div>
-          <label
-            htmlFor="email"
-            className="mb-2 block text-[14px] font-semibold text-[#0f172a]"
-          >
+          <label htmlFor="email" className="mb-2 block text-[14px] font-semibold text-[#0f172a]">
             {t("emailLabel")}
           </label>
           <input
-            id="email"
-            name="email"
-            type="email"
-            placeholder={t("emailPlaceholder")}
+            id="email" name="email" type="email"
+            placeholder={t("emailPlaceholder")} required
             className="h-[46px] w-full rounded-[8px] border border-[#cbd5e1] bg-white px-4 text-[14px] text-[#0f172a] placeholder:text-[#94a3b8] outline-none transition-colors duration-200 focus:border-[#8b5cf6]"
           />
         </div>
 
         {/* Message */}
         <div>
-          <label
-            htmlFor="message"
-            className="mb-2 block text-[14px] font-semibold text-[#0f172a]"
-          >
+          <label htmlFor="message" className="mb-2 block text-[14px] font-semibold text-[#0f172a]">
             {t("messageLabel")}
           </label>
           <textarea
-            id="message"
-            name="message"
-            placeholder={t("messagePlaceholder")}
+            id="message" name="message"
+            placeholder={t("messagePlaceholder")} required
             className="min-h-[128px] w-full resize-none rounded-[8px] border border-[#cbd5e1] bg-white px-4 py-3 text-[14px] text-[#0f172a] placeholder:text-[#94a3b8] outline-none transition-colors duration-200 focus:border-[#8b5cf6]"
           />
         </div>
 
+        {/* Feedback */}
+        {status === "success" && (
+          <p className="text-[14px] font-medium text-green-600">
+            ✅ Mensaje enviado correctamente
+          </p>
+        )}
+        {status === "error" && (
+          <p className="text-[14px] font-medium text-red-500">
+            ❌ {errorMsg}
+          </p>
+        )}
+
         {/* Submit */}
         <button
           type="submit"
-          className="inline-flex h-[46px] w-full items-center justify-center gap-2 rounded-[8px] bg-[#4f46e5] text-[14px] font-semibold text-white transition-colors duration-200 hover:bg-[#4338ca]"
+          disabled={status === "loading"}
+          className="inline-flex h-[46px] w-full items-center justify-center gap-2 rounded-[8px] bg-[#4f46e5] text-[14px] font-semibold text-white transition-colors duration-200 hover:bg-[#4338ca] disabled:opacity-60 disabled:cursor-not-allowed"
         >
           <FiSend className="text-[15px]" />
-          {t("submit")}
+          {status === "loading" ? "Enviando..." : t("submit")}
         </button>
       </div>
     </form>
