@@ -15,3 +15,6 @@ body {
   color: var(--foreground);
   /* font-family: Arial, Helvetica, sans-serif; */
 }
+
+/* Modo oscuro por clase */
+@variant dark (&:where(.dark, .dark *));

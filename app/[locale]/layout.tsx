@@ -3,6 +3,7 @@ import {Inter} from "next/font/google";
 import {NextIntlClientProvider, hasLocale} from "next-intl";
 import {getMessages} from "next-intl/server";
 import {notFound} from "next/navigation";
+import {ThemeProvider} from "next-themes"; // 👈 añadir
 import { routing } from "../i18n/routing";
 import "../globals.css";
 
@@ -31,11 +32,13 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className="h-full antialiased">
+    <html lang={locale} className="h-full antialiased" suppressHydrationWarning>
       <body className={`${inter.className} min-h-full flex flex-col`}>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -2,9 +2,9 @@
 
 import { useTranslations } from "next-intl";
 import { FaGithub, FaLinkedinIn, FaInstagram, FaFacebookF } from "react-icons/fa";
-import { UserRound } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 function TypewriterRole({ roles }: { roles: string[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -47,7 +47,7 @@ function TypewriterRole({ roles }: { roles: string[] }) {
   return (
     <span className="inline-flex items-center">
       {displayed}
-      <span className="ml-[2px] inline-block h-[0.85em] w-[2px] animate-pulse rounded-sm bg-[#0f172a]" />
+      <span className="ml-[2px] inline-block h-[0.85em] w-[2px] animate-pulse rounded-sm bg-[#0f172a] dark:bg-[#60a5fa]" />
     </span>
   );
 }
@@ -92,9 +92,11 @@ export default function Hero() {
   const roles = t.raw("roles") as string[];
 
   return (
-    <section id="inicio" className="bg-[#f5f7fb] pt-24">
+    <section
+      id="inicio"
+      className="bg-[#f5f7fb] pt-24 transition-colors duration-300 dark:bg-[#070b14]"
+    >
       <div className="mx-auto grid min-h-[calc(100vh-80px)] max-w-6xl items-center gap-10 px-8 py-14 md:grid-cols-2 md:px-12 lg:px-20">
-
         <motion.div
           className="flex flex-col items-start justify-center"
           variants={containerVariants}
@@ -103,28 +105,28 @@ export default function Hero() {
         >
           <motion.p
             variants={itemVariants}
-            className="mb-4 text-base font-medium text-[#23395d] md:text-lg"
+            className="mb-4 text-base font-medium text-[#23395d] md:text-lg dark:text-[#93c5fd]"
           >
             {t("greeting")}
           </motion.p>
 
           <motion.h1
             variants={itemVariants}
-            className="mb-3 text-4xl font-bold leading-[0.95] tracking-[-0.03em] text-[#2563eb] md:text-6xl lg:text-7xl"
+            className="mb-3 text-4xl font-bold leading-[0.95] tracking-[-0.03em] text-[#2563eb] md:text-6xl lg:text-7xl dark:text-[#60a5fa]"
           >
             {t("name")}
           </motion.h1>
 
           <motion.h2
             variants={itemVariants}
-            className="mb-6 min-h-[1.3em] w-full text-2xl font-semibold leading-tight text-[#0f172a] md:text-3xl lg:text-4xl"
+            className="mb-6 min-h-[1.3em] w-full text-2xl font-semibold leading-tight text-[#0f172a] md:text-3xl lg:text-4xl dark:text-[#f8fafc]"
           >
             <TypewriterRole roles={roles} />
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="mb-8 text-base leading-relaxed text-[#415a77] md:text-lg"
+            className="mb-8 max-w-xl text-base leading-relaxed text-[#415a77] md:text-lg dark:text-[#94a3b8]"
           >
             {t("description")}
           </motion.p>
@@ -133,7 +135,7 @@ export default function Hero() {
             variants={itemVariants}
             href="/cv.pdf"
             download
-            className="mb-8 inline-flex items-center justify-center rounded-2xl bg-[#2563eb] px-7 py-3.5 text-base font-semibold text-white shadow-[0_12px_24px_rgba(37,99,235,0.22)] transition duration-300 hover:-translate-y-1 hover:bg-[#1d4ed8]"
+            className="mb-8 inline-flex items-center justify-center rounded-2xl bg-[#2563eb] px-7 py-3.5 text-base font-semibold text-white shadow-[0_12px_24px_rgba(37,99,235,0.22)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#1d4ed8] dark:bg-[#3b82f6] dark:shadow-[0_14px_30px_rgba(59,130,246,0.28)] dark:hover:bg-[#2563eb]"
           >
             {t("button")}
           </motion.a>
@@ -141,37 +143,41 @@ export default function Hero() {
           <motion.nav
             variants={itemVariants}
             aria-label="Redes sociales"
-            className="flex items-center gap-7 text-[#334155]"
+            className="flex items-center gap-7 text-[#334155] dark:text-[#94a3b8]"
           >
             <a
               target="_blank"
+              rel="noreferrer"
               href="https://github.com/AndresRios123"
               aria-label="GitHub"
-              className="text-xl transition duration-300 hover:scale-110 hover:text-[#2563eb]"
+              className="text-xl transition-all duration-300 hover:scale-110 hover:text-[#2563eb] dark:hover:text-[#60a5fa]"
             >
               <FaGithub />
             </a>
             <a
               target="_blank"
+              rel="noreferrer"
               href="https://www.linkedin.com/in/andres-camilo-rios/"
               aria-label="LinkedIn"
-              className="text-xl transition duration-300 hover:scale-110 hover:text-[#2563eb]"
+              className="text-xl transition-all duration-300 hover:scale-110 hover:text-[#2563eb] dark:hover:text-[#60a5fa]"
             >
               <FaLinkedinIn />
             </a>
             <a
               target="_blank"
+              rel="noreferrer"
               href="https://www.instagram.com/camilo_rios__17/"
               aria-label="Instagram"
-              className="text-xl transition duration-300 hover:scale-110 hover:text-[#2563eb]"
+              className="text-xl transition-all duration-300 hover:scale-110 hover:text-[#2563eb] dark:hover:text-[#60a5fa]"
             >
               <FaInstagram />
             </a>
             <a
               target="_blank"
+              rel="noreferrer"
               href="https://www.facebook.com/camilo.maya.92/"
               aria-label="Facebook"
-              className="text-xl transition duration-300 hover:scale-110 hover:text-[#2563eb]"
+              className="text-xl transition-all duration-300 hover:scale-110 hover:text-[#2563eb] dark:hover:text-[#60a5fa]"
             >
               <FaFacebookF />
             </a>
@@ -184,20 +190,20 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <div className="relative flex h-[280px] w-[280px] items-center justify-center rounded-full border border-[#bfd8ff] bg-[#dbeafe]/25 shadow-[0_0_80px_rgba(147,197,253,0.28)] sm:h-[340px] sm:w-[340px] lg:h-[420px] lg:w-[420px]">
-            <div className="flex h-[235px] w-[235px] items-center justify-center rounded-full border-[5px] border-white bg-[#dfe7f2]/85 sm:h-[285px] sm:w-[285px] lg:h-[355px] lg:w-[355px]">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#cfe1ff] sm:h-24 sm:w-24">
-                <UserRound
-                  size={34}
-                  strokeWidth={1.8}
-                  className="text-[#7aaef7] sm:h-10 sm:w-10"
-                />
-              </div>
+          <div className="relative flex h-[280px] w-[280px] items-center justify-center rounded-full border border-[#bfd8ff] bg-[#dbeafe]/25 shadow-[0_0_80px_rgba(147,197,253,0.28)] transition-colors duration-300 sm:h-[340px] sm:w-[340px] lg:h-[420px] lg:w-[420px] dark:border-[#1e3a8a]/60 dark:bg-[#0f172a]/60 dark:shadow-[0_0_100px_rgba(59,130,246,0.18)]">
+            <div className="relative h-[235px] w-[235px] overflow-hidden rounded-full border-[5px] border-white shadow-[0_10px_30px_rgba(15,23,42,0.12)] sm:h-[285px] sm:w-[285px] lg:h-[355px] lg:w-[355px] dark:border-[#1e293b] dark:shadow-[0_14px_40px_rgba(0,0,0,0.35)]">
+              <Image
+                src="/profileeee.jpg"
+                alt="Foto de perfil"
+                fill
+                className="object-cover object-top"
+                priority
+              />
             </div>
-            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.15)_0%,_rgba(219,234,254,0)_65%)]" />
+
+            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.15)_0%,_rgba(219,234,254,0)_65%)] dark:bg-[radial-gradient(circle,_rgba(96,165,250,0.12)_0%,_rgba(15,23,42,0)_68%)]" />
           </div>
         </motion.div>
-
       </div>
     </section>
   );

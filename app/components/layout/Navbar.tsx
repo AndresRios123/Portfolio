@@ -1,10 +1,33 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Languages, Moon, Menu, X } from "lucide-react";
+import { Languages, Moon, Sun, Menu, X } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter, usePathname } from "../../i18n/navigation";
 import Link from "next/link";
+
+function ThemeButton() {
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => setMounted(true), []);
+
+  return (
+    <button
+      type="button"
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      className="text-gray-600 transition-colors duration-300 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+      aria-label="Cambiar tema"
+    >
+      {mounted && theme === "dark" ? (
+        <Sun size={17} strokeWidth={1.9} />
+      ) : (
+        <Moon size={17} strokeWidth={1.9} />
+      )}
+    </button>
+  );
+}
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,10 +48,7 @@ export default function Navbar() {
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     handleScroll();
     window.addEventListener("scroll", handleScroll);
 
@@ -44,14 +64,14 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "border-b border-gray-200/80 bg-white/75 shadow-[0_8px_30px_rgba(15,23,42,0.06)] backdrop-blur-md"
-          : "border-b border-transparent bg-white/40 backdrop-blur-sm py-5"
+          ? "border-b border-gray-200/80 bg-white/75 shadow-[0_8px_30px_rgba(15,23,42,0.06)] backdrop-blur-md dark:border-white/10 dark:bg-[#0b1120]/80 dark:shadow-[0_10px_40px_rgba(0,0,0,0.45)]"
+          : "border-b border-transparent bg-white/40 py-5 backdrop-blur-sm dark:bg-[#0b1120]/45 dark:backdrop-blur-md"
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
           href="/"
-          className="text-xl font-semibold tracking-wider text-blue-600 transition hover:opacity-80"
+          className="text-xl font-semibold tracking-wider text-blue-600 transition-opacity hover:opacity-80 dark:text-blue-400"
         >
           {"<AR>"}
         </Link>
@@ -61,7 +81,7 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm font-medium text-gray-700 transition hover:text-black"
+                className="relative text-sm font-medium text-gray-700 transition-colors duration-300 hover:text-black dark:text-gray-300 dark:hover:text-blue-400"
               >
                 {link.label}
               </a>
@@ -74,7 +94,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={changeLanguage}
-              className="flex items-center gap-1 text-sm font-medium text-gray-600 transition hover:text-gray-900"
+              className="flex items-center gap-1 text-sm font-medium text-gray-600 transition-colors duration-300 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
               aria-label="Cambiar idioma"
             >
               <Languages
@@ -85,18 +105,12 @@ export default function Navbar() {
               <span>{t("language")}</span>
             </button>
 
-            <button
-              type="button"
-              className="text-gray-600 transition hover:text-gray-900"
-              aria-label="Cambiar tema"
-            >
-              <Moon size={17} strokeWidth={1.9} />
-            </button>
+            <ThemeButton />
           </div>
 
           <button
             type="button"
-            className="text-gray-700 md:hidden"
+            className="text-gray-700 transition-colors duration-300 dark:text-gray-300 md:hidden"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Abrir menú"
           >
@@ -106,10 +120,10 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`absolute left-0 top-full z-50 w-full border-b border-gray-200/80 bg-white/90 shadow-md backdrop-blur-md transition-all duration-300 ease-out md:hidden ${
+        className={`absolute left-0 top-full z-50 w-full border-b border-gray-200/80 bg-white/90 shadow-md backdrop-blur-md transition-all duration-300 ease-out dark:border-white/10 dark:bg-[#0b1120]/90 dark:shadow-[0_10px_40px_rgba(0,0,0,0.5)] dark:backdrop-blur-xl md:hidden ${
           isOpen
-            ? "translate-y-0 opacity-100 pointer-events-auto"
-            : "-translate-y-4 opacity-0 pointer-events-none"
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-4 opacity-0"
         }`}
       >
         <div className="px-6 py-8">
@@ -119,7 +133,7 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-base font-medium text-gray-700 transition hover:text-black"
+                  className="text-base font-medium text-gray-700 transition-colors duration-300 hover:text-black dark:text-gray-300 dark:hover:text-blue-400"
                 >
                   {link.label}
                 </a>
@@ -127,11 +141,11 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <div className="mt-8 flex items-center justify-center gap-6 border-t border-gray-200 pt-6">
+          <div className="mt-8 flex items-center justify-center gap-6 border-t border-gray-200 pt-6 dark:border-white/10">
             <button
               type="button"
               onClick={changeLanguage}
-              className="flex items-center gap-1 text-sm font-medium text-gray-600 transition hover:text-gray-900"
+              className="flex items-center gap-1 text-sm font-medium text-gray-600 transition-colors duration-300 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
               aria-label="Cambiar idioma"
             >
               <Languages
@@ -142,13 +156,7 @@ export default function Navbar() {
               <span>{t("language")}</span>
             </button>
 
-            <button
-              type="button"
-              className="text-gray-600 transition hover:text-gray-900"
-              aria-label="Cambiar tema"
-            >
-              <Moon size={17} strokeWidth={1.9} />
-            </button>
+            <ThemeButton />
           </div>
         </div>
       </div>
