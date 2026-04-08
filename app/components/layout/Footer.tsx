@@ -25,34 +25,56 @@ export default function Footer() {
   const services = t.raw("services") as string[];
 
   const socialLinks = [
-    { icon: FiGithub, href: "#", label: "GitHub" },
-    { icon: FiLinkedin, href: "#", label: "LinkedIn" },
-    { icon: FiInstagram, href: "#", label: "Instagram" },
-    { icon: FiFacebook, href: "#", label: "Facebook" },
+    {
+      icon: FiGithub,
+      href: "#",
+      label: "GitHub",
+      hoverClass: "hover:bg-[#24292e]",
+    },
+    {
+      icon: FiLinkedin,
+      href: "#",
+      label: "LinkedIn",
+      hoverClass: "hover:bg-[#0A66C2]",
+    },
+    {
+      icon: FiInstagram,
+      href: "#",
+      label: "Instagram",
+      hoverClass: "hover:bg-[#E1306C]",
+    },
+    {
+      icon: FiFacebook,
+      href: "#",
+      label: "Facebook",
+      hoverClass: "hover:bg-[#1877F2]",
+    },
   ];
 
   return (
-    <footer className="bg-[#071633] px-6 py-16 text-white md:px-10 lg:px-16">
+    <footer className="bg-[#071633] px-6 py-16 text-white transition-colors duration-300 md:px-10 lg:px-16 dark:bg-[#020617]">
       <div className="mx-auto max-w-[1180px]">
-        {/* Top section */}
+
+        {/* Top */}
         <div className="grid gap-12 md:grid-cols-2 xl:grid-cols-[1.15fr_1fr_1.15fr_1.05fr]">
-          {/* Column 1 - Branding */}
+          
+          {/* Branding */}
           <div>
             <div className="text-[22px] font-extrabold tracking-[-0.04em] text-[#4ea1ff]">
               {"<AR>"}
             </div>
 
-            <p className="mt-8 max-w-[290px] text-[15px] leading-[1.65] text-[#b4c1da]">
+            <p className="mt-8 max-w-[290px] text-[15px] leading-[1.65] text-[#b4c1da] dark:text-[#94a3b8]">
               {t("description")}
             </p>
 
-            <div className="mt-8 flex items-center gap-2.5 text-[15px] text-[#c3d0e6]">
+            <div className="mt-8 flex items-center gap-2.5 text-[15px] text-[#c3d0e6] dark:text-[#94a3b8]">
               <FiMapPin className="text-[15px] text-[#4ea1ff]" />
               <span>{t("location")}</span>
             </div>
           </div>
 
-          {/* Column 2 - Navigation */}
+          {/* Navigation */}
           <div>
             <div className="flex items-center gap-2.5">
               <HiOutlineCodeBracket className="text-[17px] text-[#4ea1ff]" />
@@ -61,13 +83,13 @@ export default function Footer() {
               </h3>
             </div>
 
-            <nav aria-label="Footer navigation" className="mt-7">
+            <nav className="mt-7">
               <ul className="space-y-4">
                 {navigationLinks.map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-[15px] text-[#c3d0e6] transition-colors duration-200 hover:text-white"
+                      className="text-[15px] text-[#c3d0e6] transition-colors duration-200 hover:text-white dark:text-[#94a3b8] dark:hover:text-white"
                     >
                       {link.label}
                     </a>
@@ -77,7 +99,7 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Column 3 - Services */}
+          {/* Services */}
           <div>
             <div className="flex items-center gap-2.5">
               <RiStackLine className="text-[17px] text-[#4ea1ff]" />
@@ -88,14 +110,14 @@ export default function Footer() {
 
             <ul className="mt-7 space-y-4">
               {services.map((service) => (
-                <li key={service} className="text-[15px] text-[#c3d0e6]">
+                <li key={service} className="text-[15px] text-[#c3d0e6] dark:text-[#94a3b8]">
                   {service}
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 4 - Contact */}
+          {/* Contact */}
           <div>
             <div className="flex items-center gap-2.5">
               <FiMail className="text-[17px] text-[#4ea1ff]" />
@@ -132,8 +154,11 @@ export default function Footer() {
               </div>
             </div>
 
+            {/* Social */}
             <div className="mt-9">
-              <p className="text-[15px] text-[#c3d0e6]">{t("followMe")}</p>
+              <p className="text-[15px] text-[#c3d0e6] dark:text-[#94a3b8]">
+                {t("followMe")}
+              </p>
 
               <div className="mt-4 flex items-center gap-3">
                 {socialLinks.map((social) => {
@@ -145,8 +170,14 @@ export default function Footer() {
                       href={social.href}
                       target="_blank"
                       rel="noreferrer"
-                      aria-label={social.label}
-                      className="flex h-10 w-10 items-center justify-center rounded-[11px] bg-white/5 text-[#f8fafc] transition-all duration-200 hover:bg-white/10"
+                      className={`
+                        flex h-10 w-10 items-center justify-center
+                        rounded-[11px]
+                        bg-white/5 text-[#f8fafc]
+                        transition-all duration-300
+                        ${social.hoverClass}
+                        hover:text-white
+                      `}
                     >
                       <Icon className="text-[16px]" />
                     </a>
@@ -160,14 +191,14 @@ export default function Footer() {
         {/* Divider */}
         <div className="mt-14 h-px w-full bg-white/10" />
 
-        {/* Bottom section */}
-        <div className="mt-8 flex flex-col gap-5 text-[15px] text-[#b4c1da] md:flex-row md:items-center md:justify-between">
+        {/* Bottom */}
+        <div className="mt-8 flex flex-col gap-5 text-[15px] text-[#b4c1da] md:flex-row md:items-center md:justify-between dark:text-[#94a3b8]">
           <p>
             © 2026{" "}
             <span className="font-semibold text-[#4ea1ff]">
               {t("name")}
             </span>
-            . {" "}{t("rights")}
+            . {t("rights")}
           </p>
 
           <p className="flex items-center gap-2">
@@ -176,6 +207,7 @@ export default function Footer() {
             <span>{t("passion")}</span>
           </p>
         </div>
+
       </div>
     </footer>
   );
