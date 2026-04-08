@@ -96,38 +96,38 @@ export default function SkillsPanel() {
     return {
       wrapper:
         color === "purple"
-          ? "border-[#e7d8fb] bg-[#f5effd]"
+          ? "border-purple-200/70 bg-purple-50/80 dark:border-purple-400/15 dark:bg-purple-500/[0.07]"
           : color === "blue"
-            ? "border-[#dbe5ff] bg-[#eef4ff]"
-            : "border-[#e5e7eb] bg-[#f7f8fa]",
+            ? "border-blue-200/70 bg-blue-50/80 dark:border-blue-400/15 dark:bg-blue-500/[0.07]"
+            : "border-slate-200/80 bg-slate-50/80 dark:border-white/10 dark:bg-white/[0.03]",
 
       dot:
         color === "purple"
-          ? "bg-[#9333ea]"
+          ? "bg-purple-500 dark:bg-purple-400"
           : color === "blue"
-            ? "bg-[#4f46e5]"
-            : "bg-[#64748b]",
+            ? "bg-blue-500 dark:bg-blue-400"
+            : "bg-slate-500 dark:bg-slate-400",
 
       title:
         color === "purple"
-          ? "text-[#9333ea]"
+          ? "text-purple-700 dark:text-purple-300"
           : color === "blue"
-            ? "text-[#4f46e5]"
-            : "text-[#334155]",
+            ? "text-blue-700 dark:text-blue-300"
+            : "text-slate-700 dark:text-slate-300",
 
       skill:
         color === "purple"
-          ? "border-[#dcc7fb] text-[#9333ea] hover:border-[#cfaef9] hover:bg-[#fcfaff]"
+          ? "border-purple-200 bg-white text-purple-700 hover:border-purple-300 hover:bg-purple-50 dark:border-purple-400/15 dark:bg-[#0f172a] dark:text-purple-300 dark:hover:border-purple-400/30 dark:hover:bg-purple-500/[0.08]"
           : color === "blue"
-            ? "border-[#c8d7ff] text-[#4f46e5] hover:border-[#b6cbff] hover:bg-[#fbfdff]"
-            : "border-[#d8dee8] text-[#475569] hover:border-[#cbd5e1] hover:bg-[#fcfcfd]",
+            ? "border-blue-200 bg-white text-blue-700 hover:border-blue-300 hover:bg-blue-50 dark:border-blue-400/15 dark:bg-[#0f172a] dark:text-blue-300 dark:hover:border-blue-400/30 dark:hover:bg-blue-500/[0.08]"
+            : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50 dark:border-white/10 dark:bg-[#0f172a] dark:text-slate-300 dark:hover:border-white/15 dark:hover:bg-white/[0.04]",
 
       tooltip:
         color === "purple"
-          ? "border-[#dcc7fb] bg-white text-[#6b21a8]"
+          ? "border-purple-200 bg-white text-purple-800 dark:border-purple-400/20 dark:bg-[#0b1120]/95 dark:text-purple-200"
           : color === "blue"
-            ? "border-[#c8d7ff] bg-white text-[#3730a3]"
-            : "border-[#d8dee8] bg-white text-[#334155]",
+            ? "border-blue-200 bg-white text-blue-800 dark:border-blue-400/20 dark:bg-[#0b1120]/95 dark:text-blue-200"
+            : "border-slate-200 bg-white text-slate-700 dark:border-white/10 dark:bg-[#0b1120]/95 dark:text-slate-200",
     };
   };
 
@@ -140,10 +140,11 @@ export default function SkillsPanel() {
         pointerEvents: "none",
         zIndex: 9999,
         opacity: tooltip.visible ? 1 : 0,
-        transition: "opacity 0.1s ease",
+        transition: "opacity 0.12s ease",
       }}
       className={`
-        min-w-[150px] rounded-2xl border px-4 py-3 shadow-[0_16px_40px_rgba(15,23,42,0.10)] backdrop-blur-sm
+        min-w-[160px] rounded-2xl border px-4 py-3 shadow-[0_16px_40px_rgba(15,23,42,0.12)] backdrop-blur-md
+        dark:shadow-[0_18px_50px_rgba(0,0,0,0.45)]
         ${getCategoryStyles(tooltip.color).tooltip}
       `}
     >
@@ -172,14 +173,15 @@ export default function SkillsPanel() {
               variants={cardVariants}
               whileHover={{ y: -2 }}
               className={`
-                rounded-[1.25rem] border p-4 transition-all duration-300
-                hover:shadow-[0_12px_28px_rgba(15,23,42,0.06)]
+                rounded-[1.4rem] border p-4 transition-all duration-300
+                hover:shadow-[0_14px_30px_rgba(15,23,42,0.06)]
+                dark:hover:shadow-[0_18px_40px_rgba(0,0,0,0.22)]
                 md:p-5
                 ${styles.wrapper}
               `}
             >
-              <div className="mb-4 flex items-center gap-2">
-                <span className={`h-2 w-2 rounded-full ${styles.dot}`} />
+              <div className="mb-4 flex items-center gap-2.5">
+                <span className={`h-2.5 w-2.5 rounded-full ${styles.dot}`} />
                 <h3
                   className={`
                     text-[10px] font-extrabold uppercase tracking-[0.18em]
@@ -221,8 +223,9 @@ export default function SkillsPanel() {
                       setTooltip((prev) => ({ ...prev, visible: false }));
                     }}
                     className={`
-                      cursor-pointer rounded-xl border bg-white px-4 py-2 text-sm font-semibold
-                      shadow-[0_4px_10px_rgba(15,23,42,0.08)] transition-all duration-200
+                      cursor-pointer rounded-xl border px-4 py-2 text-sm font-semibold
+                      shadow-[0_6px_14px_rgba(15,23,42,0.06)] transition-all duration-200
+                      dark:shadow-[0_8px_18px_rgba(0,0,0,0.2)]
                       ${styles.skill}
                     `}
                   >
