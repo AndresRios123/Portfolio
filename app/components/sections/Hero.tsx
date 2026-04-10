@@ -1,9 +1,9 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { FaGithub, FaLinkedinIn, FaInstagram, FaFacebookF } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 function TypewriterRole({ roles }: { roles: string[] }) {
@@ -90,11 +90,40 @@ const imageVariants = {
 export default function Hero() {
   const t = useTranslations("Hero");
   const roles = t.raw("roles") as string[];
+  const [showScroll, setShowScroll] = useState(true);
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | null = null;
+
+    const handleScroll = () => {
+      if (window.scrollY > 1) {
+        // Espera 1 segundo fija antes de desaparecer
+        if (!timer) {
+          timer = setTimeout(() => {
+            setShowScroll(false);
+          }, 100);
+        }
+      } else {
+        // Si vuelve arriba, cancela el timer y la muestra de nuevo
+        if (timer) {
+          clearTimeout(timer);
+          timer = null;
+        }
+        setShowScroll(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (timer) clearTimeout(timer);
+    };
+  }, []);
 
   return (
     <section
       id="inicio"
-      className="bg-[#f5f7fb] pt-24 transition-colors duration-300 dark:bg-[#070b14]"
+      className="relative bg-[#f5f7fb] pt-24 transition-colors duration-300 dark:bg-[#070b14]"
     >
       <div className="mx-auto grid min-h-[calc(100vh-80px)] max-w-6xl items-center gap-10 px-8 py-14 md:grid-cols-2 md:px-12 lg:px-20">
         <motion.div
@@ -163,24 +192,6 @@ export default function Hero() {
             >
               <FaLinkedinIn />
             </a>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.instagram.com/camilo_rios__17/"
-              aria-label="Instagram"
-              className="text-xl transition-all duration-300 hover:scale-110 hover:text-[#2563eb] dark:hover:text-[#60a5fa]"
-            >
-              <FaInstagram />
-            </a>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.facebook.com/camilo.maya.92/"
-              aria-label="Facebook"
-              className="text-xl transition-all duration-300 hover:scale-110 hover:text-[#2563eb] dark:hover:text-[#60a5fa]"
-            >
-              <FaFacebookF />
-            </a>
           </motion.nav>
         </motion.div>
 
@@ -200,11 +211,53 @@ export default function Hero() {
                 priority
               />
             </div>
-
             <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.15)_0%,_rgba(219,234,254,0)_65%)] dark:bg-[radial-gradient(circle,_rgba(96,165,250,0.12)_0%,_rgba(15,23,42,0)_68%)]" />
           </div>
         </motion.div>
       </div>
+
+      {/* Scroll indicator — fixed en pantalla, desaparece 1s después de empezar a scrollear */}
+      <AnimatePresence>
+        {showScroll && (
+          <motion.div
+            className="fixed bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-50"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10, transition: { duration: 0.4, ease: "easeInOut" } }}
+            transition={{ delay: 1.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#94a3b8] dark:text-[#475569]">
+              scroll
+            </span>
+
+            <div className="relative flex h-[38px] w-[24px] items-start justify-center rounded-full border-2 border-[#94a3b8] pt-[5px] dark:border-[#475569]">
+              <motion.div
+                className="h-[7px] w-[3px] rounded-full bg-[#2563eb] dark:bg-[#60a5fa]"
+                animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
+                transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </div>
+
+            <motion.svg
+              width="16"
+              height="10"
+              viewBox="0 0 16 10"
+              fill="none"
+              className="text-[#94a3b8] dark:text-[#475569]"
+              animate={{ y: [0, 4, 0] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+            >
+              <path
+                d="M1 1L8 8L15 1"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </motion.svg>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
