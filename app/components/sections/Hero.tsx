@@ -104,7 +104,10 @@ export default function Hero() {
           timer = setTimeout(() => setShowScroll(false), 1000);
         }
       } else {
-        if (timer) { clearTimeout(timer); timer = null; }
+        if (timer) {
+          clearTimeout(timer);
+          timer = null;
+        }
         setShowScroll(true);
       }
     };
@@ -121,15 +124,44 @@ export default function Hero() {
       className={`${dmSans.variable} ${dmSerif.variable} relative bg-[#f5f7fb] pt-24 transition-colors duration-300 dark:bg-[#070b14]`}
     >
       <div className="mx-auto grid min-h-[calc(100vh-80px)] max-w-6xl items-center gap-10 px-8 py-14 md:grid-cols-2 md:px-12 lg:px-20">
+        {/* ── Image column ── */}
+        <motion.div
+          className="order-1 flex items-center justify-center md:order-2"
+          variants={imageVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <div className="relative flex h-[280px] w-[280px] items-center justify-center rounded-full border border-[#e2e8f0] bg-white/40 shadow-[0_0_80px_rgba(147,197,253,0.22)] transition-colors duration-300 sm:h-[340px] sm:w-[340px] lg:h-[420px] lg:w-[420px] dark:border-[#1e3a8a]/40 dark:bg-[#0f172a]/50 dark:shadow-[0_0_100px_rgba(59,130,246,0.14)]">
+            <div className="relative h-[235px] w-[235px] overflow-hidden rounded-full border-[4px] border-white shadow-[0_10px_40px_rgba(15,23,42,0.1)] sm:h-[285px] sm:w-[285px] lg:h-[355px] lg:w-[355px] dark:border-[#1e293b] dark:shadow-[0_14px_40px_rgba(0,0,0,0.4)]">
+              <Image
+                src="/profileeee.jpg"
+                alt="Foto de perfil"
+                fill
+                className="object-cover object-top"
+                priority
+              />
+            </div>
+
+            <div className="absolute -bottom-3 right-4 rounded-full border border-[#e2e8f0] bg-white/90 px-4 py-1.5 backdrop-blur-sm dark:border-[#1e293b] dark:bg-[#0f172a]/90">
+              <span
+                className="text-xs font-medium uppercase tracking-widest text-[#64748b] dark:text-[#475569]"
+                style={{ fontFamily: "var(--font-dm-sans)", letterSpacing: "0.14em" }}
+              >
+                {t("name")}
+              </span>
+            </div>
+
+            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.12)_0%,_rgba(219,234,254,0)_65%)] dark:bg-[radial-gradient(circle,_rgba(96,165,250,0.08)_0%,_rgba(15,23,42,0)_68%)]" />
+          </div>
+        </motion.div>
 
         {/* ── Text column ── */}
         <motion.div
-          className="flex flex-col items-start justify-center"
+          className="order-2 flex flex-col items-start justify-center md:order-1"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Eyebrow */}
           <motion.p
             variants={itemVariants}
             className="mb-5 flex items-center gap-2.5 text-sm font-medium uppercase tracking-[0.18em] text-[#2563eb] dark:text-[#60a5fa]"
@@ -139,7 +171,6 @@ export default function Hero() {
             {t("greeting")}
           </motion.p>
 
-          {/* Name — serif display */}
           <motion.h1
             variants={itemVariants}
             className="mb-2 text-5xl font-normal leading-[1.0] tracking-[-0.02em] text-[#0f172a] md:text-6xl lg:text-[5.2rem] dark:text-[#f1f5f9]"
@@ -148,7 +179,6 @@ export default function Hero() {
             {t("name")}
           </motion.h1>
 
-          {/* Typewriter role — lighter sans */}
           <motion.h2
             variants={itemVariants}
             className="mb-7 min-h-[1.4em] w-full text-xl font-light leading-snug tracking-[-0.01em] text-[#2563eb] md:text-2xl lg:text-3xl dark:text-[#60a5fa]"
@@ -157,13 +187,11 @@ export default function Hero() {
             <TypewriterRole roles={roles} />
           </motion.h2>
 
-          {/* Divider */}
           <motion.div
             variants={itemVariants}
             className="mb-7 h-px w-12 bg-[#cbd5e1] dark:bg-[#1e293b]"
           />
 
-          {/* Description */}
           <motion.p
             variants={itemVariants}
             className="mb-9 max-w-md text-[1.05rem] font-light leading-[1.8] text-[#415a77] dark:text-[#94a3b8]"
@@ -172,7 +200,6 @@ export default function Hero() {
             {t("description")}
           </motion.p>
 
-          {/* CTA */}
           <motion.a
             variants={itemVariants}
             href="/cv.pdf"
@@ -182,11 +209,16 @@ export default function Hero() {
           >
             {t("button")}
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+              <path
+                d="M2 7h10M8 3l4 4-4 4"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </motion.a>
 
-          {/* Social links */}
           <motion.nav
             variants={itemVariants}
             aria-label="Redes sociales"
@@ -211,47 +243,12 @@ export default function Hero() {
             ))}
           </motion.nav>
         </motion.div>
-
-        {/* ── Image column ── */}
-        <motion.div
-          className="flex items-center justify-center"
-          variants={imageVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="relative flex h-[280px] w-[280px] items-center justify-center rounded-full border border-[#e2e8f0] bg-white/40 shadow-[0_0_80px_rgba(147,197,253,0.22)] transition-colors duration-300 sm:h-[340px] sm:w-[340px] lg:h-[420px] lg:w-[420px] dark:border-[#1e3a8a]/40 dark:bg-[#0f172a]/50 dark:shadow-[0_0_100px_rgba(59,130,246,0.14)]">
-            <div className="relative h-[235px] w-[235px] overflow-hidden rounded-full border-[4px] border-white shadow-[0_10px_40px_rgba(15,23,42,0.1)] sm:h-[285px] sm:w-[285px] lg:h-[355px] lg:w-[355px] dark:border-[#1e293b] dark:shadow-[0_14px_40px_rgba(0,0,0,0.4)]">
-              <Image
-                src="/profileeee.jpg"
-                alt="Foto de perfil"
-                fill
-                className="object-cover object-top"
-                priority
-              />
-            </div>
-
-            {/* Subtle name label overlaid bottom-right */}
-            <div
-              className="absolute -bottom-3 right-4 rounded-full border border-[#e2e8f0] bg-white/90 px-4 py-1.5 backdrop-blur-sm dark:border-[#1e293b] dark:bg-[#0f172a]/90"
-            >
-              <span
-                className="text-xs font-medium tracking-widest text-[#64748b] uppercase dark:text-[#475569]"
-                style={{ fontFamily: "var(--font-dm-sans)", letterSpacing: "0.14em" }}
-              >
-                {t("name")}
-              </span>
-            </div>
-
-            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.12)_0%,_rgba(219,234,254,0)_65%)] dark:bg-[radial-gradient(circle,_rgba(96,165,250,0.08)_0%,_rgba(15,23,42,0)_68%)]" />
-          </div>
-        </motion.div>
       </div>
 
-      {/* ── Scroll indicator ── */}
       <AnimatePresence>
         {showScroll && (
           <motion.div
-            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-2"
+            className="fixed bottom-8 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center gap-2"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10, transition: { duration: 0.4, ease: "easeInOut" } }}
@@ -271,12 +268,21 @@ export default function Hero() {
               />
             </div>
             <motion.svg
-              width="14" height="8" viewBox="0 0 14 8" fill="none"
+              width="14"
+              height="8"
+              viewBox="0 0 14 8"
+              fill="none"
               className="text-[#94a3b8] dark:text-[#334155]"
               animate={{ y: [0, 3, 0] }}
               transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
             >
-              <path d="M1 1L7 7L13 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M1 1L7 7L13 1"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </motion.svg>
           </motion.div>
         )}
