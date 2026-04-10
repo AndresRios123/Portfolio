@@ -17,12 +17,16 @@
     "button": "Descargar CV"
   },
   "About": {
-    "badge": "+ SOBRE MÍ",
-    "title": "Acerca de <highlight>mí</highlight>",
-    "imagePlaceholder": "Imagen de perfil",
-    "paragraph1": "Soy ingeniero de software en formación, enfocado en desarrollar soluciones digitales eficientes y bien estructuradas. Actualmente dedico gran parte de mi tiempo a fortalecer mis habilidades mediante proyectos y aprendizaje constante.",
-    "paragraph2": "En lo personal, disfruto explorar nuevas tecnologías, trabajar en ideas propias y sumergirme en videojuegos y música que transmiten experiencias únicas. Me caracterizo por ser curioso, autodidacta y siempre estar en busca de nuevos retos que me permitan crecer tanto profesional como personalmente."
-  },
+  "badge": "Sobre mí",
+  "title": "Acerca de <highlight>mí</highlight>",
+  "paragraph1": "Ingeniero de software en formación, construyendo soluciones digitales eficientes desde cero — con curiosidad, estructura y muchas ganas.",
+  "paragraph2": "Dedico mi tiempo a proyectos reales, aprendizaje constante y explorar nuevas tecnologías. Fuera del código, los videojuegos y la música me recuerdan por qué importa crear experiencias que realmente conecten.",
+  "pillars": {
+    "pillar1": "Autodidacta",
+    "pillar2": "Orientado al detalle",
+    "pillar3": "Siempre construyendo"
+  }
+},
   "experience": {
     "title": "Experiencia Académica",
     "subtitle": "Mi trayectoria educativa y desarrollo profesional",

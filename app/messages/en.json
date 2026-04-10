@@ -17,12 +17,16 @@
     "button": "Download CV"
   },
     "About": {
-    "badge": "+ ABOUT ME",
-    "title": "About <highlight>me</highlight>",
-    "imagePlaceholder": "Profile image",
-    "paragraph1": "I am a software engineer in training, focused on developing efficient and well-structured digital solutions. I currently dedicate much of my time to strengthening my skills through projects and continuous learning.",
-    "paragraph2": "On a personal level, I enjoy exploring new technologies, working on my own ideas, and immersing myself in video games and music that create unique experiences. I consider myself curious, self-taught, and always in search of new challenges that help me grow both professionally and personally."
-  },
+  "badge": "About me",
+  "title": "About <highlight>me</highlight>",
+  "paragraph1": "Software engineer in training, building efficient digital solutions from scratch — with curiosity, structure, and plenty of drive.",
+  "paragraph2": "I spend my time on real projects, constant learning, and exploring new technologies. Outside of code, video games and music remind me why it matters to create experiences that truly connect.",
+  "pillars": {
+    "pillar1": "Self-taught",
+    "pillar2": "Detail-oriented",
+    "pillar3": "Always building"
+  }
+},
   "experience": {
     "title": "Academic Experience",
     "subtitle": "My educational journey and professional development",
