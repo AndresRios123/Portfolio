@@ -28,42 +28,43 @@
   }
 },
   "experience": {
-    "title": "Academic Experience",
-    "subtitle": "My educational journey and professional development",
-    "highlights": "Key highlights:",
-    "items": {
-      "software": {
-        "title": "Software Engineering",
-        "institution": "University",
-        "description": "Professional training focused on software development, system architecture, and modern technologies. Development of full projects applying best practices and agile methodologies.",
-        "highlights": [
-          "Full stack development with modern technologies",
-          "Collaborative projects and teamwork",
-          "Implementation of scalable architectures"
-        ]
-      },
-      "systems": {
-        "title": "Systems Technician",
-        "institution": "Cinar Systems",
-        "description": "Technical training in information systems, programming, and database management. Strong foundations for software development.",
-        "highlights": [
-          "Programming fundamentals",
-          "Database management",
-          "Application development"
-        ]
-      },
-      "maintenance": {
-        "title": "Computer Equipment Maintenance Technician",
-        "institution": "SENA",
-        "description": "Technical training in preventive and corrective maintenance of computer equipment, networks, and technical support. First foundation in the world of technology.",
-        "highlights": [
-          "Hardware and software maintenance",
-          "Network configuration",
-          "Specialized technical support"
-        ]
-      }
+  "badge": "Academic experience",
+  "title": "Academic Experience",
+  "subtitle": "My educational journey and professional development",
+  "highlights": "Key highlights:",
+  "items": {
+    "software": {
+      "title": "Software Engineering",
+      "institution": "University",
+      "description": "Professional training focused on software development, system architecture, and modern technologies. Development of full projects applying best practices and agile methodologies.",
+      "highlights": [
+        "Full stack development with modern technologies",
+        "Collaborative projects and teamwork",
+        "Implementation of scalable architectures"
+      ]
+    },
+    "systems": {
+      "title": "Systems Technician",
+      "institution": "Cinar Systems",
+      "description": "Technical training in information systems, programming, and database management. Strong foundations for software development.",
+      "highlights": [
+        "Programming fundamentals",
+        "Database management",
+        "Application development"
+      ]
+    },
+    "maintenance": {
+      "title": "Computer Equipment Maintenance Technician",
+      "institution": "SENA",
+      "description": "Technical training in preventive and corrective maintenance of computer equipment, networks, and technical support. First foundation in the world of technology.",
+      "highlights": [
+        "Hardware and software maintenance",
+        "Network configuration",
+        "Specialized technical support"
+      ]
     }
-  },
+  }
+},
   "testimonials": {
     "title": "Testimonials",
     "subtitle": "What people say about working with me",

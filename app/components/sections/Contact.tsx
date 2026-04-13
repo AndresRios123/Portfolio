@@ -1,89 +1,177 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { motion, Variants } from "framer-motion";
 import ContactForm from "./ContactForm";
-import {
+import { FiGithub, FiLinkedin } from "react-icons/fi";
+// import { FiInstagram, FiFacebook } from "react-icons/fi";
+
+const headerStagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.16 } },
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+const socialIcons = [
   FiGithub,
   FiLinkedin,
-  FiInstagram,
-  FiFacebook,
-} from "react-icons/fi";
+  // FiInstagram,
+  // FiFacebook,
+];
+
+const socialColors = [
+  "hover:border-slate-400 hover:text-slate-900 dark:hover:border-slate-400 dark:hover:text-white",
+  "hover:border-blue-400 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-300",
+  // "hover:border-pink-400 hover:text-pink-600 dark:hover:border-pink-400 dark:hover:text-pink-300",
+  // "hover:border-blue-500 hover:text-blue-700 dark:hover:border-blue-500 dark:hover:text-blue-300",
+];
 
 export default function Contact() {
-  const t = useTranslations("contact");
-
-  const socialLinks = t.raw("socialLinks");
-  const icons = [FiGithub, FiLinkedin, FiInstagram, FiFacebook];
+  const t           = useTranslations("contact");
+  const socialLinks = t.raw("socialLinks") as { href: string; platform: string }[];
 
   return (
     <section
       id="contacto"
-      className="bg-[#f8fafc] px-6 py-24 transition-colors duration-300 md:px-10 lg:px-16 dark:bg-[#070b14]"
+      className="relative bg-[#f5f7fb] px-6 py-28 transition-colors duration-300 md:px-10 lg:px-16 dark:bg-[#070b14]"
     >
-      <div className="mx-auto max-w-[1180px]">
-        {/* Header */}
-        <div className="mb-14 flex flex-col items-center text-center">
-          <h2 className="text-[2rem] font-bold tracking-[-0.03em] text-[#0f172a] md:text-[3rem] dark:text-white">
+      {/* Background glow */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(139,92,246,0.05),transparent)] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(139,92,246,0.09),transparent)]" />
+
+      <div className="relative mx-auto max-w-[1180px]">
+
+        {/* ── Header ─────────────────────────────────────────── */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={headerStagger}
+          className="mb-16 flex flex-col items-start"
+        >
+          <motion.span
+            variants={fadeUp}
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-purple-700 dark:border-purple-500/20 dark:bg-purple-500/10 dark:text-purple-300"
+          >
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-purple-500 dark:bg-purple-400" />
             {t("title")}
-          </h2>
+          </motion.span>
 
-          <div className="mt-4 h-[3px] w-[54px] rounded-full bg-[#8b5cf6] dark:bg-[#a78bfa]" />
+          <div className="flex w-full flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <motion.h2
+              variants={fadeUp}
+              className="max-w-xl text-balance text-4xl font-bold tracking-tight text-slate-950 md:text-5xl lg:text-[3.5rem] lg:leading-[1.1] dark:text-white"
+            >
+              Hablemos de tu{" "}
+              <span className="text-purple-600 dark:text-purple-400">proyecto</span>
+            </motion.h2>
 
-          <p className="mt-5 max-w-[470px] text-[14px] text-[#64748b] md:text-[15px] dark:text-[#94a3b8]">
-            {t("subtitle")}
-          </p>
-        </div>
+            <motion.p
+              variants={fadeUp}
+              className="max-w-sm text-[15px] leading-relaxed text-slate-500 md:text-right dark:text-slate-400"
+            >
+              {t("subtitle")}
+            </motion.p>
+          </div>
+        </motion.div>
 
-        {/* Content */}
-        <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr]">
-          {/* Left */}
-          <div>
-            <div>
-              <h3 className="text-[28px] font-semibold text-[#0f172a] dark:text-white">
-                {t("left.title")}
-              </h3>
+        {/* ── Content ───────────────────────────────────────── */}
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
 
-              <p className="mt-5 text-[15px] text-[#475569] dark:text-[#94a3b8]">
-                {t("left.description")}
-              </p>
-            </div>
+          {/* ── Left — una sola card ──────────────────────── */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm dark:border-white/10 dark:bg-[#0b1120]/80">
 
-            <div className="mt-10">
-              <h4 className="text-[15px] font-semibold text-[#0f172a] dark:text-white">
-                {t("left.socialTitle")}
-              </h4>
+              {/* Top accent bar */}
+              <div className="h-[3px] w-full bg-gradient-to-r from-purple-500 via-purple-400 to-transparent dark:from-purple-500 dark:via-purple-400 dark:to-transparent" />
 
-              <div className="mt-4 space-y-3">
-                {socialLinks.map((social: any, index: number) => {
-                  const Icon = icons[index];
+              {/* Glow */}
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_0%_0%,rgba(139,92,246,0.06),transparent)]" />
 
-                  return (
-                    <a
-                      key={index}
-                      href={social.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="
-                        flex h-[46px] items-center gap-3 rounded-[8px]
-                        border border-[#e5e7eb] bg-white px-4 text-[14px] text-[#334155]
-                        transition-colors duration-200 hover:bg-[#f8fafc]
-                        dark:border-white/10 dark:bg-[#0b1120]/80 dark:text-[#cbd5e1]
-                        dark:hover:bg-white/5
-                      "
-                    >
-                      <Icon className="text-[16px]" />
-                      <span>{social.platform}</span>
-                    </a>
-                  );
-                })}
+              <div className="relative flex flex-1 flex-col p-8">
+
+                {/* Overline */}
+                <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-purple-400 dark:text-purple-500">
+                  {t("title")}
+                </p>
+
+                {/* Título */}
+                <h3 className="mb-3 text-[1.35rem] font-bold leading-snug text-slate-900 dark:text-white">
+                  {t("left.title")}
+                </h3>
+
+                {/* Divisor */}
+                <div className="mb-5 h-px w-10 bg-purple-300 dark:bg-purple-500/50" />
+
+                {/* Descripción */}
+                <p className="text-[15px] leading-[1.85] text-slate-500 dark:text-slate-400">
+                  {t("left.description")}
+                </p>
+
+                {/* Separador interno */}
+                <div className="my-7 h-px w-full bg-slate-100 dark:bg-white/[0.06]" />
+
+                {/* Redes sociales */}
+                <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">
+                  {t("left.socialTitle")}
+                </p>
+
+                <div className="flex flex-col gap-2.5">
+                  {socialLinks.map((social, index) => {
+                    const Icon = socialIcons[index];
+                    if (!Icon) return null;
+                    return (
+                      <motion.a
+                        key={index}
+                        href={social.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        whileHover={{ x: 4 }}
+                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                        className={`
+                          flex items-center gap-3.5 rounded-xl border border-slate-200
+                          bg-slate-50 px-5 py-3.5 text-[14px] font-medium text-slate-600
+                          transition-all duration-300
+                          dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-400
+                          ${socialColors[index]}
+                        `}
+                      >
+                        <Icon className="shrink-0 text-[17px]" />
+                        <span>{social.platform}</span>
+                        <span className="ml-auto text-[11px] text-slate-400 dark:text-slate-600">
+                          →
+                        </span>
+                      </motion.a>
+                    );
+                  })}
+                </div>
+
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right */}
-          <div>
+          {/* ── Right — form ──────────────────────────────── */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          >
             <ContactForm />
-          </div>
+          </motion.div>
+
         </div>
       </div>
     </section>
