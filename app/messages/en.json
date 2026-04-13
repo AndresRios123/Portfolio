@@ -147,5 +147,44 @@
     "rights": "All rights reserved.",
     "builtWith": "Built with",
     "passion": "and a lot of passion for technology"
+  },
+  "services": {
+  "badge": "My services",
+  "title": "How can I <highlight>help you?</highlight>",
+  "subtitle": "Professional web development, from design to full implementation of digital solutions.",
+
+  "items": {
+    "frontend": {
+      "title": "Frontend Development",
+      "description": "Modern and responsive web interfaces using React, HTML5, CSS3 and JavaScript. Focused on performance and user experience."
+    },
+    "backend": {
+      "title": "Backend Development",
+      "description": "RESTful APIs and scalable databases using Node.js and Python. Clean architectures and efficient data management."
+    },
+    "fullstack": {
+      "title": "Full Stack Applications",
+      "description": "End-to-end web application development, from interface to server, using modern and scalable architectures."
+    },
+    "uiux": {
+      "title": "UI/UX Design",
+      "description": "Intuitive and attractive interfaces focused on user experience and best usability practices."
+    },
+    "responsive": {
+      "title": "Responsive Development",
+      "description": "Fully adaptive web applications for any device, ensuring optimal experience across all screen sizes."
+    },
+    "consulting": {
+      "title": "Technical Consulting",
+      "description": "Guidance on software architecture, technology selection, and best practices for digital projects."
+    }
+  },
+
+  "cta": {
+    "badge": "Next step",
+    "title": "Do you have a project in mind?",
+    "description": "Let's work together to make it real.",
+    "button": "Contact me"
   }
+}
 }

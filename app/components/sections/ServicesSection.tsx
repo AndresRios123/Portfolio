@@ -2,75 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import { Code, Palette, Database, Smartphone, Zap, Users, ArrowRight } from "lucide-react";
-
-const services = [
-  {
-    icon: Code,
-    title: "Desarrollo Frontend",
-    description: "Interfaces web modernas y responsivas con React, HTML5, CSS3 y JavaScript. Enfocado en rendimiento y experiencia de usuario.",
-    cardBg: "bg-blue-50 dark:bg-blue-500/10",
-    cardBorder: "border-blue-100 dark:border-blue-400/20",
-    iconBg: "bg-blue-100 dark:bg-blue-500/20",
-    iconColor: "text-blue-500 dark:text-blue-300",
-    barColor: "from-blue-500 to-cyan-400",
-    numberColor: "text-blue-100 dark:text-blue-500/30",
-  },
-  {
-    icon: Database,
-    title: "Desarrollo Backend",
-    description: "APIs RESTful y bases de datos escalables con Node.js y Python. Arquitecturas limpias y gestión eficiente de datos.",
-    cardBg: "bg-purple-50 dark:bg-purple-500/10",
-    cardBorder: "border-purple-100 dark:border-purple-400/20",
-    iconBg: "bg-purple-100 dark:bg-purple-500/20",
-    iconColor: "text-purple-500 dark:text-purple-300",
-    barColor: "from-violet-500 to-purple-400",
-    numberColor: "text-purple-100 dark:text-purple-500/30",
-  },
-  {
-    icon: Zap,
-    title: "Aplicaciones Full Stack",
-    description: "Desarrollo completo de aplicaciones web, desde la interfaz hasta el servidor, con arquitecturas modernas y escalables.",
-    cardBg: "bg-orange-50 dark:bg-orange-500/10",
-    cardBorder: "border-orange-100 dark:border-orange-400/20",
-    iconBg: "bg-orange-100 dark:bg-orange-500/20",
-    iconColor: "text-orange-500 dark:text-orange-300",
-    barColor: "from-orange-400 to-red-400",
-    numberColor: "text-orange-100 dark:text-orange-500/30",
-  },
-  {
-    icon: Palette,
-    title: "Diseño UI/UX",
-    description: "Interfaces intuitivas y atractivas con foco en la experiencia del usuario y las mejores prácticas de usabilidad.",
-    cardBg: "bg-pink-50 dark:bg-pink-500/10",
-    cardBorder: "border-pink-100 dark:border-pink-400/20",
-    iconBg: "bg-pink-100 dark:bg-pink-500/20",
-    iconColor: "text-pink-500 dark:text-pink-300",
-    barColor: "from-pink-500 to-rose-400",
-    numberColor: "text-pink-100 dark:text-pink-500/30",
-  },
-  {
-    icon: Smartphone,
-    title: "Desarrollo Responsive",
-    description: "Aplicaciones web totalmente adaptables a cualquier dispositivo, garantizando una experiencia óptima en cada pantalla.",
-    cardBg: "bg-green-50 dark:bg-green-500/10",
-    cardBorder: "border-green-100 dark:border-green-400/20",
-    iconBg: "bg-green-100 dark:bg-green-500/20",
-    iconColor: "text-green-600 dark:text-green-300",
-    barColor: "from-green-500 to-emerald-400",
-    numberColor: "text-green-100 dark:text-green-500/30",
-  },
-  {
-    icon: Users,
-    title: "Consultoría Técnica",
-    description: "Asesoramiento en arquitectura de software, selección de tecnologías y mejores prácticas para proyectos digitales.",
-    cardBg: "bg-indigo-50 dark:bg-indigo-500/10",
-    cardBorder: "border-indigo-100 dark:border-indigo-400/20",
-    iconBg: "bg-indigo-100 dark:bg-indigo-500/20",
-    iconColor: "text-indigo-500 dark:text-indigo-300",
-    barColor: "from-indigo-500 to-blue-400",
-    numberColor: "text-indigo-100 dark:text-indigo-500/30",
-  },
-];
+import { useTranslations } from "next-intl";
 
 const stagger: Variants = {
   hidden: {},
@@ -92,6 +24,77 @@ const headerStagger: Variants = {
 };
 
 export function ServicesSection() {
+  const t = useTranslations("services");
+
+  const services = [
+    {
+      icon: Code,
+      title: t("items.frontend.title"),
+      description: t("items.frontend.description"),
+      cardBg: "bg-blue-50 dark:bg-blue-500/10",
+      cardBorder: "border-blue-100 dark:border-blue-400/20",
+      iconBg: "bg-blue-100 dark:bg-blue-500/20",
+      iconColor: "text-blue-500 dark:text-blue-300",
+      barColor: "from-blue-500 to-cyan-400",
+      numberColor: "text-blue-100 dark:text-blue-500/30",
+    },
+    {
+      icon: Database,
+      title: t("items.backend.title"),
+      description: t("items.backend.description"),
+      cardBg: "bg-purple-50 dark:bg-purple-500/10",
+      cardBorder: "border-purple-100 dark:border-purple-400/20",
+      iconBg: "bg-purple-100 dark:bg-purple-500/20",
+      iconColor: "text-purple-500 dark:text-purple-300",
+      barColor: "from-violet-500 to-purple-400",
+      numberColor: "text-purple-100 dark:text-purple-500/30",
+    },
+    {
+      icon: Zap,
+      title: t("items.fullstack.title"),
+      description: t("items.fullstack.description"),
+      cardBg: "bg-orange-50 dark:bg-orange-500/10",
+      cardBorder: "border-orange-100 dark:border-orange-400/20",
+      iconBg: "bg-orange-100 dark:bg-orange-500/20",
+      iconColor: "text-orange-500 dark:text-orange-300",
+      barColor: "from-orange-400 to-red-400",
+      numberColor: "text-orange-100 dark:text-orange-500/30",
+    },
+    {
+      icon: Palette,
+      title: t("items.uiux.title"),
+      description: t("items.uiux.description"),
+      cardBg: "bg-pink-50 dark:bg-pink-500/10",
+      cardBorder: "border-pink-100 dark:border-pink-400/20",
+      iconBg: "bg-pink-100 dark:bg-pink-500/20",
+      iconColor: "text-pink-500 dark:text-pink-300",
+      barColor: "from-pink-500 to-rose-400",
+      numberColor: "text-pink-100 dark:text-pink-500/30",
+    },
+    {
+      icon: Smartphone,
+      title: t("items.responsive.title"),
+      description: t("items.responsive.description"),
+      cardBg: "bg-green-50 dark:bg-green-500/10",
+      cardBorder: "border-green-100 dark:border-green-400/20",
+      iconBg: "bg-green-100 dark:bg-green-500/20",
+      iconColor: "text-green-600 dark:text-green-300",
+      barColor: "from-green-500 to-emerald-400",
+      numberColor: "text-green-100 dark:text-green-500/30",
+    },
+    {
+      icon: Users,
+      title: t("items.consulting.title"),
+      description: t("items.consulting.description"),
+      cardBg: "bg-indigo-50 dark:bg-indigo-500/10",
+      cardBorder: "border-indigo-100 dark:border-indigo-400/20",
+      iconBg: "bg-indigo-100 dark:bg-indigo-500/20",
+      iconColor: "text-indigo-500 dark:text-indigo-300",
+      barColor: "from-indigo-500 to-blue-400",
+      numberColor: "text-indigo-100 dark:text-indigo-500/30",
+    },
+  ];
+
   const handleContactClick = () => {
     const el = document.getElementById("contacto");
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -103,7 +106,6 @@ export function ServicesSection() {
       className="relative bg-white px-6 py-28 transition-colors duration-300 md:px-10 lg:px-16 dark:bg-[#070b14]"
     >
       <div className="relative mx-auto max-w-[1180px]">
-
         {/* ── Header ─────────────────────────────────────────── */}
         <motion.div
           initial="hidden"
@@ -117,7 +119,7 @@ export function ServicesSection() {
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600 dark:border-blue-400/20 dark:bg-blue-500/10 dark:text-blue-300"
           >
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-blue-500 dark:bg-blue-400" />
-            Mis servicios
+            {t("badge")}
           </motion.span>
 
           <div className="flex w-full flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -125,15 +127,18 @@ export function ServicesSection() {
               variants={fadeUp}
               className="max-w-xl text-balance text-4xl font-bold tracking-tight text-gray-900 md:text-5xl lg:text-[3.5rem] lg:leading-[1.1] dark:text-white"
             >
-              ¿En qué puedo{" "}
-              <span className="text-blue-500 dark:text-blue-400">ayudarte?</span>
+              {t.rich("title", {
+                highlight: (chunks) => (
+                  <span className="text-blue-500 dark:text-blue-400">{chunks}</span>
+                ),
+              })}
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
               className="max-w-sm text-[15px] leading-relaxed text-gray-500 md:text-right dark:text-gray-400"
             >
-              Desarrollo web profesional, desde el diseño hasta la implementación completa de soluciones digitales.
+              {t("subtitle")}
             </motion.p>
           </div>
         </motion.div>
@@ -235,19 +240,19 @@ export function ServicesSection() {
                 </div>
                 <div>
                   <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-blue-400 dark:text-blue-500 mb-1">
-                    Siguiente paso
+                    {t("cta.badge")}
                   </p>
                   <h3 className="text-lg font-bold leading-snug text-gray-900 dark:text-white">
-                    ¿Tienes un proyecto en mente?
+                    {t("cta.title")}
                   </h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Trabajemos juntos para hacerlo realidad.
+                    {t("cta.description")}
                   </p>
                 </div>
               </div>
 
               <div className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-500 group-hover:shadow-[0_4px_20px_rgba(59,130,246,0.35)]">
-                Contáctame
+                {t("cta.button")}
                 <ArrowRight
                   className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1"
                   strokeWidth={2.5}
@@ -256,7 +261,6 @@ export function ServicesSection() {
             </div>
           </button>
         </motion.div>
-
       </div>
     </section>
   );

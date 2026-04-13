@@ -147,5 +147,44 @@
     "rights": "Todos los derechos reservados.",
     "builtWith": "Construido con",
     "passion": "y mucha pasión por la tecnología"
+  },
+  "services": {
+  "badge": "Mis servicios",
+  "title": "¿En qué puedo <highlight>ayudarte?</highlight>",
+  "subtitle": "Desarrollo web profesional, desde el diseño hasta la implementación completa de soluciones digitales.",
+
+  "items": {
+    "frontend": {
+      "title": "Desarrollo Frontend",
+      "description": "Interfaces web modernas y responsivas con React, HTML5, CSS3 y JavaScript. Enfocado en rendimiento y experiencia de usuario."
+    },
+    "backend": {
+      "title": "Desarrollo Backend",
+      "description": "APIs RESTful y bases de datos escalables con Node.js y Python. Arquitecturas limpias y gestión eficiente de datos."
+    },
+    "fullstack": {
+      "title": "Aplicaciones Full Stack",
+      "description": "Desarrollo completo de aplicaciones web, desde la interfaz hasta el servidor, con arquitecturas modernas y escalables."
+    },
+    "uiux": {
+      "title": "Diseño UI/UX",
+      "description": "Interfaces intuitivas y atractivas con foco en la experiencia del usuario y las mejores prácticas de usabilidad."
+    },
+    "responsive": {
+      "title": "Desarrollo Responsive",
+      "description": "Aplicaciones web totalmente adaptables a cualquier dispositivo, garantizando una experiencia óptima en cada pantalla."
+    },
+    "consulting": {
+      "title": "Consultoría Técnica",
+      "description": "Asesoramiento en arquitectura de software, selección de tecnologías y mejores prácticas para proyectos digitales."
+    }
+  },
+
+  "cta": {
+    "badge": "Siguiente paso",
+    "title": "¿Tienes un proyecto en mente?",
+    "description": "Trabajemos juntos para hacerlo realidad.",
+    "button": "Contáctame"
   }
+}
 }
