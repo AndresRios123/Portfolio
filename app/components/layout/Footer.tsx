@@ -182,7 +182,7 @@ export default function Footer() {
 
         <div className="mt-16 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-        <div className="mt-8 flex flex-col gap-4 text-[13px] text-slate-500 md:flex-row md:items-center md:justify-between">
+        <div className="mt-8 flex flex-col items-center text-center gap-4 text-[13px] text-slate-500 md:flex-row md:items-center md:justify-between md:text-left">
           <p>
             © 2026{" "}
             <span className="font-semibold text-purple-400">{t("name")}</span>.{" "}
