@@ -2,22 +2,40 @@
 
 import { useRef, useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
+import { DM_Serif_Display } from "next/font/google";
 import { projectsData } from "@/app/data/projectsData";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
 
-const doubled = [...projectsData, ...projectsData];
+const dmSerif = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-dm-serif",
+});
+
+const tripled = [...projectsData, ...projectsData, ...projectsData];
 
 const tagColors: Record<string, string> = {
-  React: "bg-blue-50 text-blue-600 border-blue-100 dark:bg-blue-500/10 dark:text-blue-300 dark:border-blue-500/20",
-  JavaScript: "bg-yellow-50 text-yellow-700 border-yellow-100 dark:bg-yellow-500/10 dark:text-yellow-300 dark:border-yellow-500/20",
-  CSS: "bg-pink-50 text-pink-600 border-pink-100 dark:bg-pink-500/10 dark:text-pink-300 dark:border-pink-500/20",
-  "Node.js": "bg-green-50 text-green-700 border-green-100 dark:bg-green-500/10 dark:text-green-300 dark:border-green-500/20",
-  Python: "bg-indigo-50 text-indigo-600 border-indigo-100 dark:bg-indigo-500/10 dark:text-indigo-300 dark:border-indigo-500/20",
-  AI: "bg-purple-50 text-purple-600 border-purple-100 dark:bg-purple-500/10 dark:text-purple-300 dark:border-purple-500/20",
-  API: "bg-orange-50 text-orange-600 border-orange-100 dark:bg-orange-500/10 dark:text-orange-300 dark:border-orange-500/20",
-  "API Integration": "bg-orange-50 text-orange-600 border-orange-100 dark:bg-orange-500/10 dark:text-orange-300 dark:border-orange-500/20",
-  "Payment API": "bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-300 dark:border-emerald-500/20",
-  Dashboard: "bg-slate-100 text-slate-600 border-slate-200 dark:bg-slate-500/10 dark:text-slate-300 dark:border-slate-500/20",
+  React:
+    "bg-blue-50 text-blue-600 border-blue-100 dark:bg-blue-500/10 dark:text-blue-300 dark:border-blue-500/20",
+  JavaScript:
+    "bg-yellow-50 text-yellow-700 border-yellow-100 dark:bg-yellow-500/10 dark:text-yellow-300 dark:border-yellow-500/20",
+  CSS:
+    "bg-pink-50 text-pink-600 border-pink-100 dark:bg-pink-500/10 dark:text-pink-300 dark:border-pink-500/20",
+  "Node.js":
+    "bg-green-50 text-green-700 border-green-100 dark:bg-green-500/10 dark:text-green-300 dark:border-green-500/20",
+  Python:
+    "bg-indigo-50 text-indigo-600 border-indigo-100 dark:bg-indigo-500/10 dark:text-indigo-300 dark:border-indigo-500/20",
+  AI:
+    "bg-purple-50 text-purple-600 border-purple-100 dark:bg-purple-500/10 dark:text-purple-300 dark:border-purple-500/20",
+  API:
+    "bg-orange-50 text-orange-600 border-orange-100 dark:bg-orange-500/10 dark:text-orange-300 dark:border-orange-500/20",
+  "API Integration":
+    "bg-orange-50 text-orange-600 border-orange-100 dark:bg-orange-500/10 dark:text-orange-300 dark:border-orange-500/20",
+  "Payment API":
+    "bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-300 dark:border-emerald-500/20",
+  Dashboard:
+    "bg-slate-100 text-slate-600 border-slate-200 dark:bg-slate-500/10 dark:text-slate-300 dark:border-slate-500/20",
 };
 
 const cardAccents = [
@@ -46,12 +64,11 @@ const headerStagger = {
   visible: { transition: { staggerChildren: 0.16 } },
 };
 
-const SPEED = 0.8; // px por frame
+const SPEED = 0.8;
 
 export default function Projects() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
-
   const isDragging = useRef(false);
   const dragStartX = useRef(0);
   const dragStartScroll = useRef(0);
@@ -59,12 +76,10 @@ export default function Projects() {
   const scrollPos = useRef(0);
   const pausedRef = useRef(false);
 
-  // Mantener pausedRef sincronizado con el estado paused
   useEffect(() => {
     pausedRef.current = paused;
   }, [paused]);
 
-  // Auto-scroll con rAF + reposicionamiento silencioso al llegar al 50%
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -72,14 +87,8 @@ export default function Projects() {
     const animate = () => {
       if (!pausedRef.current && !isDragging.current && track) {
         const half = track.scrollWidth / 2;
-
         scrollPos.current += SPEED;
-
-        // Reposicionamiento silencioso: al llegar a la mitad, vuelve al inicio
-        if (scrollPos.current >= half) {
-          scrollPos.current -= half;
-        }
-
+        if (scrollPos.current >= half) scrollPos.current -= half;
         track.scrollLeft = scrollPos.current;
       }
       rafRef.current = requestAnimationFrame(animate);
@@ -89,7 +98,6 @@ export default function Projects() {
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
 
-  // Mouse handlers
   const onMouseDown = useCallback((e: React.MouseEvent) => {
     const track = trackRef.current;
     if (!track) return;
@@ -104,14 +112,9 @@ export default function Projects() {
     if (!isDragging.current || !trackRef.current) return;
     const track = trackRef.current;
     const half = track.scrollWidth / 2;
-    const dx = e.clientX - dragStartX.current;
-
-    let newPos = dragStartScroll.current - dx;
-
-    // Wrap manual también infinito en ambas direcciones
+    let newPos = dragStartScroll.current - (e.clientX - dragStartX.current);
     if (newPos >= half) newPos -= half;
     if (newPos < 0) newPos += half;
-
     scrollPos.current = newPos;
     track.scrollLeft = newPos;
   }, []);
@@ -123,14 +126,11 @@ export default function Projects() {
   }, []);
 
   const onMouseLeave = useCallback(() => {
-    if (isDragging.current) {
-      isDragging.current = false;
-    }
+    if (isDragging.current) isDragging.current = false;
     setPaused(false);
     if (trackRef.current) trackRef.current.style.cursor = "grab";
   }, []);
 
-  // Touch handlers
   const onTouchStart = useCallback((e: React.TouchEvent) => {
     isDragging.current = true;
     dragStartX.current = e.touches[0].clientX;
@@ -142,12 +142,11 @@ export default function Projects() {
     if (!isDragging.current || !trackRef.current) return;
     const track = trackRef.current;
     const half = track.scrollWidth / 2;
-    const dx = e.touches[0].clientX - dragStartX.current;
-
-    let newPos = dragStartScroll.current - dx;
+    let newPos =
+      dragStartScroll.current -
+      (e.touches[0].clientX - dragStartX.current);
     if (newPos >= half) newPos -= half;
     if (newPos < 0) newPos += half;
-
     scrollPos.current = newPos;
     track.scrollLeft = newPos;
   }, []);
@@ -160,7 +159,7 @@ export default function Projects() {
   return (
     <section
       id="proyectos"
-      className="relative overflow-hidden bg-[#f5f7fb] px-6 py-28 transition-colors duration-300 md:px-10 lg:px-16 dark:bg-[#070b14]"
+      className={`${dmSerif.variable} relative overflow-hidden bg-[#f5f7fb] px-6 py-28 transition-colors duration-300 md:px-10 lg:px-16 dark:bg-[#070b14]`}
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(139,92,246,0.05),transparent)] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(59,130,246,0.07),transparent)]" />
 
@@ -183,17 +182,21 @@ export default function Projects() {
           <div className="flex w-full flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <motion.h2
               variants={fadeUp}
-              className="max-w-xl text-balance text-4xl font-bold tracking-tight text-slate-950 md:text-5xl lg:text-[3.5rem] lg:leading-[1.1] dark:text-white"
+              className="max-w-xl text-balance text-4xl font-normal tracking-tight text-slate-950 md:text-5xl lg:text-[3.5rem] lg:leading-[1.1] dark:text-white"
+              style={{ fontFamily: "var(--font-dm-serif)" }}
             >
               Lo que he{" "}
-              <span className="text-purple-600 dark:text-blue-400">construido</span>
+              <span className="italic text-purple-600 dark:text-blue-400">
+                construido
+              </span>
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
               className="max-w-sm text-[15px] leading-relaxed text-slate-500 md:text-right dark:text-slate-400"
             >
-              Una selección de proyectos que demuestran mis habilidades en desarrollo web y resolución de problemas.
+              Una selección de proyectos que demuestran mis habilidades en
+              desarrollo web y resolución de problemas.
             </motion.p>
           </div>
         </motion.div>
@@ -205,18 +208,23 @@ export default function Projects() {
           transition={{ duration: 0.8 }}
           className="relative"
         >
-          {/* Fade edges */}
           <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-[#f5f7fb] to-transparent dark:from-[#070b14]" />
           <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-[#f5f7fb] to-transparent dark:from-[#070b14]" />
 
-          <div className="absolute -top-8 right-0 select-none text-[11px] font-medium text-slate-400 dark:text-slate-600 flex items-center gap-1.5">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <div className="absolute -top-8 right-0 flex items-center gap-1.5 select-none text-[11px] font-medium text-slate-400 dark:text-slate-600">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <path d="M18 8L22 12L18 16M6 8L2 12L6 16M2 12H22" />
             </svg>
             Arrastra para explorar
           </div>
 
-          {/* Track: overflow-x-hidden para ocultar la scrollbar nativa */}
           <div
             ref={trackRef}
             className="overflow-x-hidden"
@@ -229,13 +237,13 @@ export default function Projects() {
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
           >
-            {/* Sin animación CSS — el movimiento lo controla el rAF */}
             <div
               className="flex gap-6 py-4"
               style={{ width: "max-content" }}
             >
-              {doubled.map((project, i) => {
-                const accentIdx = (project.id - 1) % cardAccents.length;
+              {tripled.map((project, i) => {
+                const accentIdx =
+                  (project.id - 1) % cardAccents.length;
                 const isUnavailable = project.liveUrl === "#";
 
                 return (
@@ -256,11 +264,13 @@ export default function Projects() {
                       select-none
                     `}
                   >
-                    <div className={`h-[3px] w-full bg-gradient-to-r ${cardAccents[accentIdx]}`} />
+                    <div
+                      className={`h-[3px] w-full bg-gradient-to-r ${cardAccents[accentIdx]}`}
+                    />
 
                     <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(ellipse_70%_40%_at_50%_0%,rgba(139,92,246,0.06),transparent)] dark:bg-[radial-gradient(ellipse_70%_40%_at_50%_0%,rgba(59,130,246,0.09),transparent)]" />
 
-                    <span className="pointer-events-none absolute right-5 top-4 select-none text-6xl font-black leading-none text-slate-100 dark:text-white/[0.04] transition-opacity duration-500 group-hover:opacity-60">
+                    <span className="pointer-events-none absolute right-5 top-4 select-none text-6xl font-black leading-none text-slate-100 transition-opacity duration-500 group-hover:opacity-60 dark:text-white/[0.04]">
                       {String(project.id).padStart(2, "0")}
                     </span>
 
@@ -305,7 +315,11 @@ export default function Projects() {
                         )}
 
                         <a
-                          href={project.codeUrl === "#" ? undefined : project.codeUrl}
+                          href={
+                            project.codeUrl === "#"
+                              ? undefined
+                              : project.codeUrl
+                          }
                           target="_blank"
                           rel="noreferrer"
                           aria-disabled={project.codeUrl === "#"}

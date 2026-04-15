@@ -2,7 +2,15 @@
 
 import { useTranslations } from "next-intl";
 import { motion, Variants } from "framer-motion";
+import { DM_Serif_Display } from "next/font/google";
 import { RiDoubleQuotesR } from "react-icons/ri";
+
+const dmSerif = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-dm-serif",
+});
 
 type TestimonialItem = {
   name: string;
@@ -82,7 +90,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonios"
-      className="relative bg-white px-6 py-28 transition-colors duration-300 md:px-10 lg:px-16 dark:bg-[#070b14]"
+      className={`${dmSerif.variable} relative bg-white px-6 py-28 transition-colors duration-300 md:px-10 lg:px-16 dark:bg-[#070b14]`}
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(139,92,246,0.04),transparent)] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(139,92,246,0.08),transparent)]" />
 
@@ -107,10 +115,11 @@ export default function Testimonials() {
           <div className="flex w-full flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <motion.h2
               variants={fadeUp}
-              className="max-w-xl text-balance text-4xl font-bold tracking-tight text-slate-950 md:text-5xl lg:text-[3.5rem] lg:leading-[1.1] dark:text-white"
+              className="max-w-xl text-balance text-4xl font-normal tracking-tight text-slate-950 md:text-5xl lg:text-[3.5rem] lg:leading-[1.1] dark:text-white"
+              style={{ fontFamily: "var(--font-dm-serif)" }}
             >
               Lo que{" "}
-              <span className="text-purple-600 dark:text-purple-400">dicen</span>{" "}
+              <span className="italic text-purple-600 dark:text-purple-400">dicen</span>{" "}
               de mí
             </motion.h2>
 

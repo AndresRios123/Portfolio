@@ -3,6 +3,14 @@
 import { motion, Variants } from "framer-motion";
 import { Code, Palette, Database, Smartphone, Zap, Users, ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { DM_Serif_Display } from "next/font/google";
+
+const dmSerif = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-dm-serif",
+});
 
 const stagger: Variants = {
   hidden: {},
@@ -103,9 +111,10 @@ export function ServicesSection() {
   return (
     <section
       id="servicios"
-      className="relative bg-white px-6 py-28 transition-colors duration-300 md:px-10 lg:px-16 dark:bg-[#070b14]"
+      className={`${dmSerif.variable} relative bg-white px-6 py-28 transition-colors duration-300 md:px-10 lg:px-16 dark:bg-[#070b14]`}
     >
       <div className="relative mx-auto max-w-[1180px]">
+
         {/* ── Header ─────────────────────────────────────────── */}
         <motion.div
           initial="hidden"
@@ -125,11 +134,12 @@ export function ServicesSection() {
           <div className="flex w-full flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <motion.h2
               variants={fadeUp}
-              className="max-w-xl text-balance text-4xl font-bold tracking-tight text-gray-900 md:text-5xl lg:text-[3.5rem] lg:leading-[1.1] dark:text-white"
+              className="max-w-xl text-balance text-4xl font-normal tracking-tight text-gray-900 md:text-5xl lg:text-[3.5rem] lg:leading-[1.1] dark:text-white"
+              style={{ fontFamily: "var(--font-dm-serif)" }}
             >
               {t.rich("title", {
                 highlight: (chunks) => (
-                  <span className="text-blue-500 dark:text-blue-400">{chunks}</span>
+                  <span className="italic text-blue-500 dark:text-blue-400">{chunks}</span>
                 ),
               })}
             </motion.h2>
@@ -239,7 +249,7 @@ export function ServicesSection() {
                   <ArrowRight strokeWidth={1.75} className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-blue-400 dark:text-blue-500 mb-1">
+                  <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.18em] text-blue-400 dark:text-blue-500">
                     {t("cta.badge")}
                   </p>
                   <h3 className="text-lg font-bold leading-snug text-gray-900 dark:text-white">
@@ -261,6 +271,7 @@ export function ServicesSection() {
             </div>
           </button>
         </motion.div>
+
       </div>
     </section>
   );

@@ -5,6 +5,15 @@ import { motion, Variants } from "framer-motion";
 import ContactForm from "./ContactForm";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 // import { FiInstagram, FiFacebook } from "react-icons/fi";
+import { DM_Serif_Display } from "next/font/google";
+
+
+const dmSerif = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-dm-serif",
+});
 
 const headerStagger: Variants = {
   hidden: {},

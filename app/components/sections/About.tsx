@@ -2,7 +2,15 @@
 
 import { useTranslations } from "next-intl";
 import { motion, Variants } from "framer-motion";
+import { DM_Serif_Display } from "next/font/google";
 import SkillsPanel from "./SkillsPanel";
+
+const dmSerif = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-dm-serif",
+});
 
 const stagger: Variants = {
   hidden: {},
@@ -38,7 +46,7 @@ export default function About() {
   return (
     <section
       id="sobre-mi"
-      className="relative bg-[#f5f7fb] px-6 py-28 transition-colors duration-300 md:px-10 lg:px-16 dark:bg-[#070b14]"
+      className={`${dmSerif.variable} relative bg-[#f5f7fb] px-6 py-28 transition-colors duration-300 md:px-10 lg:px-16 dark:bg-[#070b14]`}
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(168,85,247,0.05),transparent)] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(59,130,246,0.07),transparent)]" />
 
@@ -62,11 +70,12 @@ export default function About() {
 
           <motion.h2
             variants={fadeUp}
-            className="max-w-2xl text-balance text-4xl font-bold tracking-tight text-slate-950 md:text-5xl lg:text-[3.5rem] lg:leading-[1.1] dark:text-slate-50"
+            className="max-w-2xl text-balance text-4xl font-normal tracking-tight text-slate-950 md:text-5xl lg:text-[3.5rem] lg:leading-[1.1] dark:text-slate-50"
+            style={{ fontFamily: "var(--font-dm-serif)" }}
           >
             {t.rich("title", {
               highlight: (chunks) => (
-                <span className="text-purple-600 dark:text-blue-400">
+                <span className="italic text-purple-600 dark:text-blue-400">
                   {chunks}
                 </span>
               ),
