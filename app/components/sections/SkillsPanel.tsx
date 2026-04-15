@@ -29,6 +29,7 @@ const skills = [
     items: [
       { name: "Git", level: "Intermedio" },
       { name: "GitHub", level: "Intermedio" },
+      { name: "Inteligencia Artificial", level: "Intermedio" },
     ],
   },
 ];
