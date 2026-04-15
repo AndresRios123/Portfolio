@@ -2,8 +2,9 @@
   "Navbar": {
     "home": "Inicio",
     "about": "Sobre mí",
-    "experience": "Experiencia",
+    "servicios": "Servicios",
     "projects": "Proyectos",
+    "experience": "Experiencia",
     "testimonials": "Testimonios",
     "contact": "Contacto",
     "language": "ES"
