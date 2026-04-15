@@ -76,32 +76,34 @@
     }
   }
 },
-  "testimonials": {
-    "title": "Testimonials",
-    "subtitle": "What people say about working with me",
-    "items": [
-      {
-        "name": "María González",
-        "role": "Project Manager",
-        "initials": "MG",
-        "text": "Andres demonstrated exceptional dedication in every project. His ability to solve complex problems and deliver high-quality solutions is admirable. A reliable and committed professional."
-      },
-      {
-        "name": "Carlos Mendoza",
-        "role": "Tech Lead",
-        "initials": "CM",
-        "text": "It is a pleasure working with Andres. His curiosity and ability to quickly learn new technologies make him stand out. He always looks for the best solution and shares his knowledge with the team."
-      },
-      {
-        "name": "Laura Fernández",
-        "role": "Frontend Developer",
-        "initials": "LF",
-        "text": "Andres has a great ability to turn ideas into clean and functional code. His attention to detail and commitment to quality make every collaboration productive and enriching."
-      }
-    ]
-  },
+"testimonials": {
+  "title": "Testimonials",
+  "heading": "What people <highlight>say</highlight> about me",
+  "subtitle": "Feedback from people I have worked or studied with.",
+  "items": [
+    {
+      "name": "Karen Jurado",
+      "role": "Systems Engineering Student",
+      "initials": "LR",
+      "text": "Andrés has a very clear way of explaining complex concepts. He is always willing to help and shows a strong commitment to continuous learning."
+    },
+    {
+      "name": "Juan Ríos",
+      "role": "Systems Engineering Student",
+      "initials": "JR",
+      "text": "He is great at solving problems and finding efficient solutions. Working with him on academic projects has always been a very positive experience."
+    },
+    {
+      "name": "Carlos Días",
+      "role": "Frontend Developer",
+      "initials": "CM",
+      "text": "Andrés stands out for his ability to turn ideas into functional products. He has strong design and development skills and learns extremely fast."
+    }
+  ]
+},
   "contact": {
     "title": "Contact",
+    "heading": "Let’s talk about your <highlight>project</highlight>",
     "subtitle": "Do you have a project in mind? I would love to hear from you",
 
     "left": {

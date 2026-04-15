@@ -7,7 +7,6 @@ import { FiGithub, FiLinkedin } from "react-icons/fi";
 // import { FiInstagram, FiFacebook } from "react-icons/fi";
 import { DM_Serif_Display } from "next/font/google";
 
-
 const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
   weight: "400",
@@ -44,19 +43,21 @@ const socialColors = [
 ];
 
 export default function Contact() {
-  const t           = useTranslations("contact");
-  const socialLinks = t.raw("socialLinks") as { href: string; platform: string }[];
+  const t = useTranslations("contact");
+  const socialLinks = t.raw("socialLinks") as {
+    href: string;
+    platform: string;
+  }[];
 
   return (
     <section
       id="contacto"
-      className="relative bg-[#f5f7fb] px-6 py-28 transition-colors duration-300 md:px-10 lg:px-16 dark:bg-[#070b14]"
+      className={`${dmSerif.variable} relative bg-[#f5f7fb] px-6 py-28 transition-colors duration-300 md:px-10 lg:px-16 dark:bg-[#070b14]`}
     >
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(139,92,246,0.05),transparent)] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(139,92,246,0.09),transparent)]" />
 
       <div className="relative mx-auto max-w-[1180px]">
-
         {/* ── Header ─────────────────────────────────────────── */}
         <motion.div
           initial="hidden"
@@ -76,10 +77,16 @@ export default function Contact() {
           <div className="flex w-full flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <motion.h2
               variants={fadeUp}
-              className="max-w-xl text-balance text-4xl font-bold tracking-tight text-slate-950 md:text-5xl lg:text-[3.5rem] lg:leading-[1.1] dark:text-white"
+              className="max-w-xl text-balance text-4xl font-normal tracking-tight text-slate-950 md:text-5xl lg:text-[3.5rem] lg:leading-[1.1] dark:text-white"
+              style={{ fontFamily: "var(--font-dm-serif)" }}
             >
-              Hablemos de tu{" "}
-              <span className="text-purple-600 dark:text-purple-400">proyecto</span>
+              {t.rich("heading", {
+                highlight: (chunks) => (
+                  <span className="italic text-purple-600 dark:text-purple-400">
+                    {chunks}
+                  </span>
+                ),
+              })}
             </motion.h2>
 
             <motion.p
@@ -93,7 +100,6 @@ export default function Contact() {
 
         {/* ── Content ───────────────────────────────────────── */}
         <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
-
           {/* ── Left — una sola card ──────────────────────── */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -102,7 +108,6 @@ export default function Contact() {
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm dark:border-white/10 dark:bg-[#0b1120]/80">
-
               {/* Top accent bar */}
               <div className="h-[3px] w-full bg-gradient-to-r from-purple-500 via-purple-400 to-transparent dark:from-purple-500 dark:via-purple-400 dark:to-transparent" />
 
@@ -110,7 +115,6 @@ export default function Contact() {
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_0%_0%,rgba(139,92,246,0.06),transparent)]" />
 
               <div className="relative flex flex-1 flex-col p-8">
-
                 {/* Overline */}
                 <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-purple-400 dark:text-purple-500">
                   {t("title")}
@@ -166,7 +170,6 @@ export default function Contact() {
                     );
                   })}
                 </div>
-
               </div>
             </div>
           </motion.div>
@@ -176,11 +179,14 @@ export default function Contact() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{
+              duration: 0.85,
+              delay: 0.1,
+              ease: [0.16, 1, 0.3, 1],
+            }}
           >
             <ContactForm />
           </motion.div>
-
         </div>
       </div>
     </section>

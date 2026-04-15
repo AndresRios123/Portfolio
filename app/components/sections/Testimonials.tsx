@@ -113,15 +113,21 @@ export default function Testimonials() {
           </motion.span>
 
           <div className="flex w-full flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <motion.h2
-              variants={fadeUp}
-              className="max-w-xl text-balance text-4xl font-normal tracking-tight text-slate-950 md:text-5xl lg:text-[3.5rem] lg:leading-[1.1] dark:text-white"
-              style={{ fontFamily: "var(--font-dm-serif)" }}
-            >
-              Lo que{" "}
-              <span className="italic text-purple-600 dark:text-purple-400">dicen</span>{" "}
-              de mí
-            </motion.h2>
+            
+
+          <motion.h2
+            variants={fadeUp}
+            className="max-w-xl text-balance text-4xl font-normal tracking-tight text-slate-950 md:text-5xl lg:text-[3.5rem] lg:leading-[1.1] dark:text-white"
+            style={{ fontFamily: "var(--font-dm-serif)" }}
+          >
+            {t.rich("heading", {
+              highlight: (chunks) => (
+                <span className="italic text-purple-600 dark:text-purple-400">
+                  {chunks}
+                </span>
+              ),
+            })}
+          </motion.h2>
 
             <motion.p
               variants={fadeUp}

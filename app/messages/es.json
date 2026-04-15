@@ -77,31 +77,33 @@
   }
 },
   "testimonials": {
-    "title": "Testimonios",
-    "subtitle": "Lo que dicen quienes han trabajado conmigo",
-    "items": [
-      {
-        "name": "María González",
-        "role": "Project Manager",
-        "initials": "MG",
-        "text": "Andres demostró una dedicación excepcional en cada proyecto. Su capacidad para resolver problemas complejos y entregar soluciones de calidad es admirable. Un profesional confiable y comprometido."
-      },
-      {
-        "name": "Carlos Mendoza",
-        "role": "Tech Lead",
-        "initials": "CM",
-        "text": "Es un placer trabajar con Andres. Su curiosidad natural y habilidad para aprender rápidamente nuevas tecnologías lo hacen destacar. Siempre busca la mejor solución y comparte sus conocimientos con el equipo."
-      },
-      {
-        "name": "Laura Fernández",
-        "role": "Frontend Developer",
-        "initials": "LF",
-        "text": "Andres tiene una gran habilidad para transformar ideas en código limpio y funcional. Su atención al detalle y compromiso con la calidad hacen que cada colaboración sea productiva y enriquecedora."
-      }
-    ]
-  },
+  "title": "Testimonios",
+  "heading": "Lo que <highlight>dicen</highlight> de mí",
+  "subtitle": "Opiniones de personas con las que he trabajado o estudiado.",
+  "items": [
+    {
+      "name": "Karen Jurado",
+      "role": "Estudiante de Ingeniería de Sistemas",
+      "initials": "LR",
+      "text": "Andrés tiene una forma muy clara de explicar conceptos complejos. Siempre está dispuesto a ayudar y se nota mucho su interés por el aprendizaje continuo."
+    },
+    {
+      "name": "Juan Ríos",
+      "role": "Estudiante de Ingeniería de Sistemas",
+      "initials": "JR",
+      "text": "Es muy bueno resolviendo problemas y buscando soluciones eficientes. Trabajar con él en proyectos académicos siempre ha sido una experiencia muy positiva."
+    },
+    {
+      "name": "Carlos Días",
+      "role": "Desarrollador Frontend",
+      "initials": "CM",
+      "text": "Andrés destaca por su capacidad para convertir ideas en productos funcionales. Tiene muy buen criterio para diseño y desarrollo, y aprende extremadamente rápido."
+    }
+  ]
+},
   "contact": {
     "title": "Contacto",
+    "heading": "Hablemos de tu <highlight>proyecto</highlight>",
     "subtitle": "¿Tienes un proyecto en mente? Me encantaría saber de ti",
 
     "left": {
