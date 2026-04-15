@@ -113,8 +113,8 @@
     },
 
     "socialLinks": [
-      { "platform": "GitHub", "href": "#" },
-      { "platform": "LinkedIn", "href": "#" },
+      { "platform": "GitHub", "href": "https://github.com/AndresRios123" },
+      { "platform": "LinkedIn", "href": "https://www.linkedin.com/in/andres-camilo-rios/" },
       { "platform": "Instagram", "href": "#" },
       { "platform": "Facebook", "href": "#" }
     ],
