@@ -14,8 +14,8 @@ export const projectsData = [
     description:
       "Aplicación completa de gestión de talleres y seminarios con sistema de roles, panel administrativo, registro de eventos e integración de métodos de pago para facilitar la organización de eventos.",
     tags: ["React", "Node.js", "Payment API", "Dashboard"],
-    liveUrl: "#",
-    codeUrl: "#",
+    liveUrl: "https://github.com/migueltovarb/ISWDISENO202502-2AndresRios123",
+    codeUrl: "https://github.com/migueltovarb/ISWDISENO202502-2AndresRios123",
   },
   {
     id: 3,
@@ -23,7 +23,7 @@ export const projectsData = [
     description:
       "Aplicación de recomendación de recetas potenciada por IA que sugiere recetas detalladas paso a paso basadas en los ingredientes proporcionados por el usuario, haciendo la cocina más accesible.",
     tags: ["AI", "Python", "React", "API"],
-    liveUrl: "#",
-    codeUrl: "#",
+    liveUrl: "https://recipes-app-front.vercel.app/login",
+    codeUrl: "https://github.com/AndresRios123/recipes-app-front",
   },
 ];
