@@ -43,6 +43,17 @@
         "Implementation of scalable architectures"
       ]
     },
+    "talento_tech": {
+      "title": "Talento Tech Bootcamp - Basic Programming",
+      "institution": "Ministry of ICT & Technological University of Pereira",
+      "description": "Completed an intensive 159-hour bootcamp focused on programming fundamentals, logical thinking, and software development, strengthening practical skills for building technological solutions.",
+      "highlights": [
+        "159-hour intensive training in programming",
+        "Development of problem-solving and logical thinking skills",
+        "Hands-on experience in development environments",
+        "Official certification from the Ministry of ICT"
+      ]
+    },
     "systems": {
       "title": "Systems Technician",
       "institution": "Cinar Systems",
@@ -185,6 +196,29 @@
     "title": "Do you have a project in mind?",
     "description": "Let's work together to make it real.",
     "button": "Contact me"
+  }
+},
+"projects": {
+  "badge": "Projects",
+  "title": "What I’ve <highlight>built</highlight>",
+  "subtitle": "A selection of projects that showcase my skills in web development and problem-solving.",
+  "drag": "Drag to explore",
+  "viewProject": "View project",
+  "code": "Code",
+  "comingSoon": "Coming soon",
+  "items": {
+    "playlist_app": {
+      "title": "PlaylistApp",
+      "description": "Real-time music player built with API integration, allowing users to explore and play their favorite songs through a modern and intuitive interface."
+    },
+    "seminari_app": {
+      "title": "SeminariApp",
+      "description": "Full-featured workshop and seminar management application with role-based access, admin dashboard, event registration, and payment integration to streamline event organization."
+    },
+    "saborify": {
+      "title": "Saborify",
+      "description": "AI-powered recipe recommendation application that suggests step-by-step recipes based on user-provided ingredients, making cooking more accessible."
+    }
   }
 }
 }

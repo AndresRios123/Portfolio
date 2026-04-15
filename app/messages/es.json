@@ -43,6 +43,17 @@
         "Implementación de arquitecturas escalables"
       ]
     },
+    "talento_tech": {
+      "title": "Bootcamp Talento Tech - Programación Nivel Básico",
+      "institution": "Ministerio TIC & Universidad Tecnológica de Pereira",
+      "description": "Participé en el bootcamp Talento Tech, donde adquirí fundamentos sólidos en programación, lógica computacional y desarrollo de software en un entorno práctico e intensivo de 159 horas.",
+      "highlights": [
+        "Formación intensiva de 159 horas en programación",
+        "Desarrollo de habilidades en lógica y resolución de problemas",
+        "Trabajo práctico en entornos de desarrollo",
+        "Certificación oficial del Ministerio TIC"
+        ]
+    },
     "systems": {
       "title": "Técnico en Sistemas",
       "institution": "Cinar Sistemas",
@@ -185,6 +196,29 @@
     "title": "¿Tienes un proyecto en mente?",
     "description": "Trabajemos juntos para hacerlo realidad.",
     "button": "Contáctame"
+  }
+},
+"projects": {
+  "badge": "Proyectos",
+  "title": "Lo que he <highlight>construido</highlight>",
+  "subtitle": "Una selección de proyectos que demuestran mis habilidades en desarrollo web y resolución de problemas.",
+  "drag": "Arrastra para explorar",
+  "viewProject": "Ver proyecto",
+  "code": "Código",
+  "comingSoon": "Próximamente",
+  "items": {
+    "playlist_app": {
+      "title": "PlaylistApp",
+      "description": "Reproductor de música en tiempo real construido con integración de API, permitiendo a los usuarios explorar y reproducir sus canciones favoritas con una interfaz moderna e intuitiva."
+    },
+    "seminari_app": {
+      "title": "SeminariApp",
+      "description": "Aplicación completa de gestión de talleres y seminarios con sistema de roles, panel administrativo, registro de eventos e integración de métodos de pago para facilitar la organización de eventos."
+    },
+    "saborify": {
+      "title": "Saborify",
+      "description": "Aplicación de recomendación de recetas potenciada por IA que sugiere recetas detalladas paso a paso basadas en los ingredientes proporcionados por el usuario, haciendo la cocina más accesible."
+    }
   }
 }
 }

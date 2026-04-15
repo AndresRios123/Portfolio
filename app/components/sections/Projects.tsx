@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { DM_Serif_Display } from "next/font/google";
 import { projectsData } from "@/app/data/projectsData";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
+import { useTranslations } from "next-intl";
 
 const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
@@ -67,6 +68,7 @@ const headerStagger = {
 const SPEED = 0.8;
 
 export default function Projects() {
+  const t = useTranslations("projects");
   const trackRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
   const isDragging = useRef(false);
@@ -176,7 +178,7 @@ export default function Projects() {
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-purple-700 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-300"
           >
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-purple-500 dark:bg-blue-400" />
-            Proyectos
+            {t("badge")}
           </motion.span>
 
           <div className="flex w-full flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -185,18 +187,20 @@ export default function Projects() {
               className="max-w-xl text-balance text-4xl font-normal tracking-tight text-slate-950 md:text-5xl lg:text-[3.5rem] lg:leading-[1.1] dark:text-white"
               style={{ fontFamily: "var(--font-dm-serif)" }}
             >
-              Lo que he{" "}
-              <span className="italic text-purple-600 dark:text-blue-400">
-                construido
-              </span>
+              {t.rich("title", {
+                highlight: (chunks) => (
+                  <span className="italic text-purple-600 dark:text-blue-400">
+                    {chunks}
+                  </span>
+                ),
+              })}
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
               className="max-w-sm text-[15px] leading-relaxed text-slate-500 md:text-right dark:text-slate-400"
             >
-              Una selección de proyectos que demuestran mis habilidades en
-              desarrollo web y resolución de problemas.
+              {t("subtitle")}
             </motion.p>
           </div>
         </motion.div>
@@ -222,7 +226,7 @@ export default function Projects() {
             >
               <path d="M18 8L22 12L18 16M6 8L2 12L6 16M2 12H22" />
             </svg>
-            Arrastra para explorar
+            {t("drag")}
           </div>
 
           <div
@@ -242,8 +246,7 @@ export default function Projects() {
               style={{ width: "max-content" }}
             >
               {tripled.map((project, i) => {
-                const accentIdx =
-                  (project.id - 1) % cardAccents.length;
+                const accentIdx = (project.id - 1) % cardAccents.length;
                 const isUnavailable = project.liveUrl === "#";
 
                 return (
@@ -276,11 +279,11 @@ export default function Projects() {
 
                     <div className="relative flex flex-1 flex-col p-7">
                       <h3 className="mb-3 text-[1.1rem] font-bold leading-snug text-slate-900 dark:text-white">
-                        {project.title}
+                        {t(`items.${project.key}.title`)}
                       </h3>
 
                       <p className="mb-5 flex-1 text-[13.5px] leading-[1.8] text-slate-500 dark:text-slate-400">
-                        {project.description}
+                        {t(`items.${project.key}.description`)}
                       </p>
 
                       <div className="mb-6 flex flex-wrap gap-1.5">
@@ -300,7 +303,7 @@ export default function Projects() {
                       <div className="flex items-center gap-2.5 border-t border-slate-100 pt-5 dark:border-white/[0.06]">
                         {isUnavailable ? (
                           <span className="inline-flex h-9 flex-1 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 text-[13px] font-medium text-slate-400 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-500">
-                            Próximamente
+                            {t("comingSoon")}
                           </span>
                         ) : (
                           <a
@@ -310,7 +313,7 @@ export default function Projects() {
                             className="inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-xl bg-purple-600 px-4 text-[13px] font-semibold text-white transition-all duration-300 hover:bg-purple-700 dark:bg-blue-600 dark:hover:bg-blue-500"
                           >
                             <FiExternalLink className="text-[13px]" />
-                            Ver proyecto
+                            {t("viewProject")}
                           </a>
                         )}
 
@@ -330,7 +333,7 @@ export default function Projects() {
                           }`}
                         >
                           <FiGithub className="text-[13px]" />
-                          Código
+                          {t("code")}
                         </a>
                       </div>
                     </div>
