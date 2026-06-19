@@ -25,6 +25,8 @@ export const projectsData = [
   {
     id: 4,
     key: "clipper",
-    tags: ["Javascript", "Node.js", "React", "MongoDB"]
+    tags: ["Javascript", "Node.js", "React", "MongoDB"],
+    liveUrl: "https://github.com/AndresRios123/clipper-backend",
+    codeUrl: "https://github.com/AndresRios123/clipper-backend",
   },
 ];
