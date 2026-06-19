@@ -221,6 +221,10 @@
     "saborify": {
       "title": "Saborify",
       "description": "Aplicación de recomendación de recetas potenciada por IA que sugiere recetas detalladas paso a paso basadas en los ingredientes proporcionados por el usuario, haciendo la cocina más accesible."
+    },
+        "clipper": {
+      "title": "Clipper",
+      "description": "Clipper es una solución integral para la gestión de barberías, diseñada para programar citas, administrar clientes y optimizar las operaciones diarias."
     }
   }
 }

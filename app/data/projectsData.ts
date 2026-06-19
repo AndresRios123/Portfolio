@@ -22,4 +22,9 @@ export const projectsData = [
     liveUrl: "https://recipes-app-front.vercel.app/login",
     codeUrl: "https://github.com/AndresRios123/recipes-app-front",
   },
+  {
+    id: 4,
+    key: "clipper",
+    tags: ["Javascript", "Node.js", "React", "MongoDB"]
+  },
 ];

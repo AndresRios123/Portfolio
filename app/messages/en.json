@@ -221,6 +221,10 @@
     "saborify": {
       "title": "Saborify",
       "description": "AI-powered recipe recommendation application that suggests step-by-step recipes based on user-provided ingredients, making cooking more accessible."
+    },
+    "clipper": {
+      "title": "Clipper",
+      "description": "Clipper is an all-in-one barber shop management solution for scheduling appointments, managing customers, and streamlining daily operations."
     }
   }
 }
