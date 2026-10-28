@@ -45,7 +45,6 @@ export default function Navbar() {
     { label: t("servicios"), href: "#servicios" },
     { label: t("projects"), href: "#proyectos" },
     { label: t("experience"), href: "#experiencia" },
-    { label: t("testimonials"), href: "#testimonios" },
     { label: t("contact"), href: "#contacto" },
   ];
 
