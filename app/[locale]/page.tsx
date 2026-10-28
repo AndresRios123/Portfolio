@@ -18,7 +18,6 @@ export default function HomePage() {
       <ServicesSection/>
       <Projects/>
       <AcademicExperience/>
-      <Testimonials/>
       <Contact/>
       <Footer/>
     </main>
