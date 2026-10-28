@@ -52,7 +52,7 @@ export default async function LocaleLayout({
         className="min-h-full flex flex-col"
         style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <NextIntlClientProvider messages={messages}>
             {children}
           </NextIntlClientProvider>
